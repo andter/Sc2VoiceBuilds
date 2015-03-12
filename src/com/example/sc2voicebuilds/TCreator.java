@@ -93,6 +93,10 @@ public class TCreator extends Base_Activity {
 				    	string = "";
 				    }
 				});
+                editalert.setNegativeButton("Close", new DialogInterface.OnClickListener(){
+                            public void onClick(DialogInterface dialog, int whichButton){
+                            }
+                });
 				
 				editalert.show();
 				return true;

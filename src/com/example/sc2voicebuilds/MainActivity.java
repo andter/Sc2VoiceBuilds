@@ -2,15 +2,11 @@ package com.example.sc2voicebuilds;
 
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 public class MainActivity extends Base_Activity {
 
@@ -46,12 +42,11 @@ public class MainActivity extends Base_Activity {
 		Intent intent = new Intent(v.getContext(), ProtossBuilds.class);
 		v.getContext().startActivity(intent);
 	}
-	
-	public void donatorClick(View v)
-	{
-		Intent intent = new Intent(v.getContext(), Donators.class);
-		v.getContext().startActivity(intent);
-	}
+
+    public void loadData(View v){
+        Intent intent = new Intent(v.getContext(), UploadBuilds.class);
+        v.getContext().startActivity(intent);
+    }
 	
 	public void exit()
 	{

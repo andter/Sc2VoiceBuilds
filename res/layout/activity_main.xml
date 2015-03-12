@@ -59,23 +59,16 @@
             android:background="@drawable/custom_button"
             android:onClick="selectRace"/>
 
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/userlbl"
-            android:layout_alignParentBottom="true"
-            android:background="@drawable/custom_button"
-            android:layout_marginBottom="45dp"
-            android:text="Donators" 
-            android:onClick="donatorClick"/>
 
         <Button
             android:id="@+id/button2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button"
-            android:text="Load Outside Builds" android:layout_below="@+id/button1" android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"/>
+            android:text="Upload a Build"
+            android:layout_below="@+id/button1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:onClick="loadData"/>
 
 </RelativeLayout>

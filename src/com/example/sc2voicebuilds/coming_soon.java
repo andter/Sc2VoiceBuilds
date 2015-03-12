@@ -12,7 +12,4 @@ public class coming_soon extends Base_Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.coming_soon);
 	}
-
-			
-	
 }

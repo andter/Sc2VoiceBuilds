@@ -377,7 +377,7 @@ public class TerranBuilds extends Base_Activity {
 		 placeholder = 0;
 		while (construct.hasNextLine()) {
 
-			if (readingBuild == false) {
+			if (!readingBuild) {
 
 				if (construct.nextLine().equals(in)) {
 					readingBuild = true;
@@ -385,7 +385,7 @@ public class TerranBuilds extends Base_Activity {
 
 			}
 
-			if (readingBuild == true) {
+			if (readingBuild) {
 				String z = construct.nextLine();
 				if (z != "end") {
 					
