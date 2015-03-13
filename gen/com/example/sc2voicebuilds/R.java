@@ -247,7 +247,7 @@ public final class R {
     }
     public static final class menu {
         public static final int bar=0x7f0a0000;
-        public static final int base__creator=0x7f0a0001;
+        public static final int creator_bar =0x7f0a0001;
         public static final int donators=0x7f0a0002;
         public static final int main=0x7f0a0003;
     }

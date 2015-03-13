@@ -1,16 +1,16 @@
  package com.example.sc2voicebuilds;
 
 
-import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 
-import android.graphics.Color;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 
-public class TCreator extends Base_Activity {
+public class TCreator extends Creator_Activity {
 
     ViewGroup parent;
     TextView txt;
@@ -37,10 +37,11 @@ public class TCreator extends Base_Activity {
 	DecimalFormat formatter, f;
 	ArrayAdapter myarrayAdapter;
 	ListView lv;
-	
+
+
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.base__creator, menu);
+		getMenuInflater().inflate(R.menu.creator_bar, menu);
 		return true;
 	}
 
@@ -72,7 +73,7 @@ public class TCreator extends Base_Activity {
 
 				editalert.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
 				    public void onClick(DialogInterface dialog, int whichButton) {
-				    	inputString = new String(input.getText().toString());
+				    	String inputString = new String(input.getText().toString());
 				    	  String filename = "terranBuilds.dat";
 					        FileOutputStream outputStream;
 					        string = "";
@@ -88,7 +89,6 @@ public class TCreator extends Base_Activity {
 					          e.printStackTrace();
 					        }
 				    	Toast.makeText(getBaseContext(), "Saved", Toast.LENGTH_LONG).show();
-				    //	Toast.makeText(getBaseContext(), string, Toast.LENGTH_LONG).show();
 
 				    	string = "";
 				    }

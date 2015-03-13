@@ -14,7 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
-public class PCreator extends Base_Activity {
+public class PCreator extends Creator_Activity {
 
 	Spinner s, s1;
 	String structures_spinner[], units_spinner[], TAG = "TCreator", string = "", myList[], tempstr;
@@ -30,10 +30,11 @@ public class PCreator extends Base_Activity {
 	DecimalFormat formatter, f;
 	ArrayAdapter myarrayAdapter;
 	ListView lv;
-	
+
+
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.base__creator, menu);
+		getMenuInflater().inflate(R.menu.creator_bar, menu);
 		return true;
 	}
 
@@ -46,7 +47,6 @@ public class PCreator extends Base_Activity {
 				Intent intent = new Intent(this, MainActivity.class);
 				this.startActivity(intent);
 				return true;
-		    //save
 			case R.id.save:
 
 				Log.i(TAG, "Save Clicked");
@@ -65,7 +65,7 @@ public class PCreator extends Base_Activity {
 
 				editalert.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
 				    public void onClick(DialogInterface dialog, int whichButton) {
-				    	inputString = new String(input.getText().toString());
+				    	String inputString = new String(input.getText().toString());
 				    	  String filename = "protossBuilds.dat";
 					        FileOutputStream outputStream;
 					        string = "";
@@ -81,7 +81,6 @@ public class PCreator extends Base_Activity {
 					          e.printStackTrace();
 					        }
 				    	Toast.makeText(getBaseContext(), "Saved", Toast.LENGTH_LONG).show();
-				    //	Toast.makeText(getBaseContext(), string, Toast.LENGTH_LONG).show();
 
 				    	string = "";
 				    }

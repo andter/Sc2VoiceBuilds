@@ -17,7 +17,7 @@ import java.sql.Statement;
 
 
 
-public class Donators extends Activity {
+public class Donators extends Base_Activity {
 	Thread thrd1;
 	Thread thrd2;
 	Thread thrd3;
@@ -96,7 +96,7 @@ public class Donators extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.donators, menu);
+		getMenuInflater().inflate(R.menu.bar, menu);
 		return true;
 	}
 
