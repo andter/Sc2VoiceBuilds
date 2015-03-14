@@ -30,18 +30,19 @@
             android:layout_alignTop="@+id/spinner1"
             android:layout_toRightOf="@+id/spinner1"
             android:background="@drawable/custom_button"
-            android:onClick="chooseBuild"
+            android:onClick="selectBuild"
             android:text="Select Build" />
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text=""
-            android:id="@+id/buildName"/>
+            android:id="@+id/myBuild"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button"
             android:text="Upload Build"
+            android:onClick="upload"
             android:id="@+id/button"/>
 </LinearLayout>
