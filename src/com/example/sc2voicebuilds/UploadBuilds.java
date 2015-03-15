@@ -10,10 +10,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
 import com.parse.*;
 
 import java.io.BufferedReader;
@@ -30,17 +27,24 @@ public class UploadBuilds extends Base_Activity {
     TextView output, buildTextView;
     Spinner s;
     String [] races, constructedBuild;
-    int myTemp, numberOfRequests;
+    int myTemp, numberOfRequests, requestsLeft;
     String selectedBuild, datax, race, email;
     FileInputStream fIn;
     String[] buildName;
+    static Boolean uploaded;
+
+    TextView tv, tv2;
+    Spinner spin;
+    Button btn, btn2;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_builds);
 
-        numberOfRequests = 5;
+        numberOfRequests = 4;
+        requestsLeft = 5;
         races = new String[3];
         s = (Spinner) findViewById(R.id.spinner1);
         races[0] = "Terran";
@@ -59,6 +63,18 @@ public class UploadBuilds extends Base_Activity {
             output.setText("Error Connecting to Network");
         }
         else{
+            //Enable all views
+            tv = (TextView) findViewById(R.id.textv);
+            tv2 = (TextView) findViewById(R.id.myBuild);
+            spin = (Spinner) findViewById(R.id.spinner1);
+            btn = (Button) findViewById(R.id.button1);
+            btn2 = (Button) findViewById(R.id.button);
+
+            tv.setVisibility(View.VISIBLE);
+            tv2.setVisibility(View.VISIBLE);
+            spin.setVisibility(View.VISIBLE);
+            btn.setVisibility(View.VISIBLE);
+            btn2.setVisibility(View.VISIBLE);
             /*
                 Parse.enableLocalDatastore(this);
                 Parse.initialize(this, "v9D4hN8qNtXWTE4z4aNOHZsXkhBlVW29Iucw1Ll9", "bw5EcOR0neExSVWiMzrd8xdj1sqeSAmTSWlnZTdC");*/
@@ -79,39 +95,20 @@ public class UploadBuilds extends Base_Activity {
             query.getFirstInBackground(new GetCallback<ParseObject>() {
                 public void done(ParseObject object, ParseException e) {
                     if (object == null) {
-                        Toast.makeText(getBaseContext(), "Email not found", Toast.LENGTH_LONG).show();
                         addUser();
+                        uploadBuild();
+                        Toast.makeText(getBaseContext(), "Successfully Uploaded Build!", Toast.LENGTH_SHORT).show();
                     } else {
                         int request = object.getInt("Requests");
                         if (request > 0) {
-                            int requestsLeft = request - 1;
-                            object.put("Requests", requestsLeft);
-                            object.saveInBackground();
+                                requestsLeft = request - 1;
+                                object.put("Requests", requestsLeft);
+                                object.saveInBackground();
+                                uploadBuild();
                         }
-                    }
-                }
-            });
-
-
-
-            ParseObject userObject = new ParseObject("User");
-            userObject.put("Email", email);
-            userObject.put("Requests", numberOfRequests);
-            userObject.saveInBackground();
-
-
-            ParseObject testObject = new ParseObject("Build");
-            testObject.put("Name", selectedBuild);
-            testObject.put("Race", race);
-            testObject.addAllUnique("Entity", Arrays.asList(constructedBuild));
-            Log.e("PARSE.COM", "DOWNLOAD STARTED");
-            testObject.saveInBackground(new SaveCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if (e != null) {
-                        Toast.makeText(getBaseContext(), "FAILED" + e.getMessage(), Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(getBaseContext(), "Successfully Uploaded Build", Toast.LENGTH_LONG).show();
+                        else{
+                            Toast.makeText(getBaseContext(), "You can't upload any more builds at the present moment", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
             });
@@ -124,6 +121,32 @@ public class UploadBuilds extends Base_Activity {
         userObject.put("Requests", numberOfRequests);
         userObject.saveInBackground();
     }
+
+    public void notifyNumberOfBuilds(){
+        Toast.makeText(getBaseContext(), "You can upload " + requestsLeft + " builds until reset", Toast.LENGTH_LONG).show();
+    }
+    public boolean uploadBuild(){
+        uploaded = false;
+        ParseObject testObject = new ParseObject("Build");
+        testObject.put("Name", selectedBuild);
+        testObject.put("Race", race);
+        testObject.addAllUnique("Entity", Arrays.asList(constructedBuild));
+        Log.e("PARSE.COM", "DOWNLOAD STARTED");
+        testObject.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Toast.makeText(getBaseContext(), "FAILED" + e.getMessage(), Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getBaseContext(), "Successfully Uploaded Build!", Toast.LENGTH_SHORT).show();
+                    notifyNumberOfBuilds();
+                }
+            }
+        });
+        Log.i("Uploaded", uploaded.toString());
+        return uploaded;
+    }
+
 
     public void constructBuild(String in) {
         int picker, placeholder;

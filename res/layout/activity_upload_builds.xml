@@ -7,14 +7,14 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New Text"
             android:id="@+id/outputTextView" android:layout_gravity="center_horizontal"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Select Race"
-            android:id="@+id/textView"/>
+            android:id="@+id/textv"
+            android:visibility="invisible"/>
     <Spinner
             android:id="@+id/spinner1"
             android:layout_width="200dp"
@@ -22,7 +22,8 @@
             android:layout_alignLeft="@+id/textView1"
             android:layout_below="@+id/textView1"
             android:entries="@array/races"
-            android:prompt="@string/racesPrompt" />
+            android:prompt="@string/racesPrompt"
+            android:visibility="invisible"/>
     <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
@@ -31,18 +32,22 @@
             android:layout_toRightOf="@+id/spinner1"
             android:background="@drawable/custom_button"
             android:onClick="selectBuild"
-            android:text="Select Build" />
+            android:text="Select Build"
+            android:visibility="invisible"/>
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text=""
-            android:id="@+id/myBuild"/>
+            android:id="@+id/myBuild"
+            android:visibility="invisible"/>
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button"
             android:text="Upload Build"
             android:onClick="upload"
-            android:id="@+id/button"/>
+            android:id="@+id/button"
+            android:visibility="invisible"/>
 </LinearLayout>
