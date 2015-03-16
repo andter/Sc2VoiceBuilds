@@ -1,6 +1,8 @@
 package com.example.sc2voicebuilds;
 
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;

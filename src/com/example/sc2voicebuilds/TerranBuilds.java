@@ -9,6 +9,8 @@ import java.util.Scanner;
 
 import javax.xml.datatype.Duration;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -54,18 +56,19 @@ public class TerranBuilds extends Base_Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_terran_builds);
-		
+
 		displayArray = new String[50];
 		for (int x = 0; x < 50; x++)
 		{
 			displayArray[x] = "";
 		}
-		
+
+        /*
 		myarrayAdapter = new ArrayAdapter<String>(this, R.layout.items, displayArray);
 		lv = (ListView)findViewById(R.id.listView1);
 		lv.setAdapter(myarrayAdapter);
 		f = new DecimalFormat("00");
-		
+
 		btn = (Button) findViewById(R.id.start);
 		txt = (TextView) findViewById(R.id.name);
 		load = (ImageButton) findViewById(R.id.imageButton1);
@@ -113,12 +116,25 @@ public class TerranBuilds extends Base_Activity {
 				}
 			}
 
-		};
+		};*/
 		// new Thread(runnable).start();
 
 	}
 
+    public void setupBuild(){
+        TerranFragment frag = new TerranFragment();
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.terran_layout, frag, "TerranFragment");
+        transaction.commit();
+
+
+    }
+
+
 	public void startTimer(View v) {
+        Toast.makeText(getBaseContext(), "TEST", Toast.LENGTH_LONG).show();
+        /*
         int secondSize = soundArraySeconds.length;
         totalSec = soundArraySeconds[secondSize-1];
         if (!Running) {
@@ -134,7 +150,7 @@ public class TerranBuilds extends Base_Activity {
             startBtn.setVisibility(View.INVISIBLE);
             new Thread(runnable).start();
             Running = true;
-        }
+        }*/
 
 	}
 	
@@ -171,37 +187,6 @@ public class TerranBuilds extends Base_Activity {
             int convert = Integer.parseInt(bleh);
             String bleh2 = Integer.toString(soundArraySeconds[aNumber]);
             int convert2 = Integer.parseInt(bleh2);
-
-		/*
-	    final MediaPlayer armory = MediaPlayer.create(this, R.raw.armory);
-	    final MediaPlayer banshee = MediaPlayer.create(this, R.raw.banshee);
-	    final MediaPlayer barracks = MediaPlayer.create(this, R.raw.barracks);
-	    final MediaPlayer battlecruiser = MediaPlayer.create(this, R.raw.battlecruiser);
-	    final MediaPlayer commandcenter = MediaPlayer.create(this, R.raw.commandcenter);
-	    final MediaPlayer engineeringbay = MediaPlayer.create(this, R.raw.engineeringbay);
-	    final MediaPlayer factory = MediaPlayer.create(this, R.raw.factory);
-	    final MediaPlayer ghost = MediaPlayer.create(this, R.raw.ghost);
-	    final MediaPlayer ghostacademy = MediaPlayer.create(this, R.raw.ghostacademy);
-	    final MediaPlayer hellion = MediaPlayer.create(this, R.raw.hellion);
-	    final MediaPlayer marine= MediaPlayer.create(this, R.raw.marine);
-	    final MediaPlayer missileturret = MediaPlayer.create(this, R.raw.missileturret);
-	    final MediaPlayer orbitalcommand = MediaPlayer.create(this, R.raw.orbitalcommand);
-	    final MediaPlayer planetaryfortress = MediaPlayer.create(this, R.raw.planetaryfortress);
-	    final MediaPlayer raven = MediaPlayer.create(this, R.raw.raven);
-	    final MediaPlayer reactor = MediaPlayer.create(this, R.raw.reactor);
-	    final MediaPlayer reaper = MediaPlayer.create(this, R.raw.reaper);
-	    final MediaPlayer refinery = MediaPlayer.create(this, R.raw.refinery);
-	    final MediaPlayer scv = MediaPlayer.create(this, R.raw.scv);
-	    final MediaPlayer sensortower = MediaPlayer.create(this, R.raw.sensortower);
-	    final MediaPlayer starport = MediaPlayer.create(this, R.raw.starport);
-	    final MediaPlayer supplydepot = MediaPlayer.create(this, R.raw.supplydepot);
-	    final MediaPlayer tank = MediaPlayer.create(this, R.raw.tank);
-	    final MediaPlayer thor = MediaPlayer.create(this, R.raw.thor);
-	    final MediaPlayer threeworkers = MediaPlayer.create(this, R.raw.threeworkers);
-	    final MediaPlayer twoworkers = MediaPlayer.create(this, R.raw.twoworkers);
-	    final MediaPlayer viking = MediaPlayer.create(this, R.raw.viking);
-	    final MediaPlayer widowmine = MediaPlayer.create(this, R.raw.widowmine);*/
-
 
             if (convert == soundArrayMinutes[aNumber]) {
                 if (convert2 == num) {
@@ -423,8 +408,6 @@ public class TerranBuilds extends Base_Activity {
 
 		}
 
-		//after placing things into their respected strings, display strings
-		//soundArray = new int[placeholder];
 		soundArray = new String [placeholder];
 		soundArrayMinutes = new int [placeholder-1];
 		soundArraySeconds = new int [placeholder-1];
@@ -441,7 +424,6 @@ public class TerranBuilds extends Base_Activity {
 			String xyz = scanMinutes.nextLine();
 			int xyzx = Integer.parseInt(xyz);
 			soundArrayMinutes[y] = xyzx;
-		//	Toast.makeText(getBaseContext(), xyz, Toast.LENGTH_SHORT).show();
 			
 			y++;
 		}
@@ -451,7 +433,6 @@ public class TerranBuilds extends Base_Activity {
 			int xyzx = Integer.parseInt(xyz);
 			soundArraySeconds[yx] = xyzx;
 			String bleh = Integer.toString(soundArraySeconds[yx]);
-		//	Toast.makeText(getBaseContext(), bleh, Toast.LENGTH_SHORT).show();
 			yx++;
 		}
 
@@ -603,16 +584,10 @@ public class TerranBuilds extends Base_Activity {
 			else{
 				soundArray[SS] = "none";
 			}
-		//	suckmyD += soundArray[SS];
 			SS++;
 		}
-		
-	//	Toast.makeText(getBaseContext(), suckmyD, Toast.LENGTH_LONG).show();
+
 		myarrayAdapter.notifyDataSetChanged();
-	//	display.setText(constructedBuild);
-	//	minutesDisplay.setText(constructedBuildMinutes);
-	//	secondsDisplay.setText(constructedBuildSeconds);
-		
 
 	}
 
@@ -679,11 +654,12 @@ public class TerranBuilds extends Base_Activity {
                         switch (which) {
 
                             case 0:
+                                setupBuild();/*
                                 btn.setVisibility(View.VISIBLE);
                                 txt.setText(buildName[0]);
                                 txt.setVisibility(View.VISIBLE);
                                 load.setVisibility(View.INVISIBLE);
-                                constructBuild(buildName[0]);
+                                constructBuild(buildName[0]);*/
                                 break;
 
 				/*
@@ -693,12 +669,13 @@ public class TerranBuilds extends Base_Activity {
 				 */
 
                             default:
-
+                                setupBuild();
+                                /*
                                 btn.setVisibility(View.VISIBLE);
                                 txt.setText(buildName[which]);
                                 txt.setVisibility(View.VISIBLE);
                                 load.setVisibility(View.INVISIBLE);
-                                constructBuild(buildName[which]);
+                                constructBuild(buildName[which]);*/
                                 break;
 
                         }
