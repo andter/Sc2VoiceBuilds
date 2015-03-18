@@ -76,28 +76,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f3b48b0-7780-46c9-b599-37f76720763a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/Base_Activity.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/Base_Activity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/Creator_Activity.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/Creator_Activity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/PCreator.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/PCreator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$id.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$id.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$layout.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$layout.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$menu.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$menu.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$raw.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$raw.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$string.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$string.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$style.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R$style.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/R.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/Sc2VB.apk" afterPath="$PROJECT_DIR$/out/production/Sc2VB/Sc2VB.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/Sc2VB.unaligned.apk" afterPath="$PROJECT_DIR$/out/production/Sc2VB/Sc2VB.unaligned.apk" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/TCreator.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/TCreator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/TerranBuilds$1.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/TerranBuilds$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/TerranBuilds.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/TerranBuilds.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/TerranFragment.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/TerranFragment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/UploadBuilds.class" afterPath="$PROJECT_DIR$/out/production/Sc2VB/com/example/sc2voicebuilds/UploadBuilds.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranBuilds.java" afterPath="$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranBuilds.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranFragment.java" afterPath="$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/activity_terran_builds.xml" afterPath="$PROJECT_DIR$/res/layout/activity_terran_builds.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/fragment_terran_build.xml" afterPath="$PROJECT_DIR$/res/layout/fragment_terran_build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Sc2VoiceBuilds.iws" />
@@ -160,8 +143,8 @@
       <file leaf-file-name="TerranFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3885" max-vertical-offset="4635">
-              <caret line="146" column="111" selection-start-line="146" selection-start-column="111" selection-end-line="146" selection-end-column="111" />
+            <state vertical-scroll-proportion="53.22222" vertical-offset="1902" max-vertical-offset="4635">
+              <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2174#2317#0" expanded="true" />
@@ -193,19 +176,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="items.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/items.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="fragment_terran_build.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/res/layout/fragment_terran_build.xml">
           <provider editor-type-id="text-editor">
@@ -219,11 +189,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TerranBuilds.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TerranBuilds.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranBuilds.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9237288" vertical-offset="5065" max-vertical-offset="9570">
-              <caret line="374" column="16" selection-start-line="374" selection-start-column="16" selection-end-line="375" selection-end-column="9" />
+            <state vertical-scroll-proportion="-7.259259" vertical-offset="314" max-vertical-offset="6285">
+              <caret line="34" column="87" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -234,8 +204,18 @@
       <file leaf-file-name="TCreator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/TCreator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="4095" max-vertical-offset="4725">
+            <state vertical-scroll-proportion="0.0" vertical-offset="4065" max-vertical-offset="4725">
               <caret line="248" column="28" selection-start-line="248" selection-start-column="28" selection-end-line="248" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Node.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.11904762" vertical-offset="0" max-vertical-offset="630">
+              <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -281,8 +261,8 @@
         <option value="$PROJECT_DIR$/src/com/example/sc2voicebuilds/Placeholder.java" />
         <option value="$PROJECT_DIR$/res/layout/activity_terran_builds.xml" />
         <option value="$PROJECT_DIR$/res/layout/fragment_terran_build.xml" />
-        <option value="$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranFragment.java" />
         <option value="$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranBuilds.java" />
+        <option value="$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranFragment.java" />
       </list>
     </option>
   </component>
@@ -737,14 +717,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/TCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1920" max-vertical-offset="4725">
-          <caret line="149" column="27" selection-start-line="149" selection-start-column="27" selection-end-line="149" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/ZCreator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="300">
@@ -1096,14 +1068,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/TCreator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="4725">
-          <caret line="248" column="28" selection-start-line="248" selection-start-column="28" selection-end-line="248" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/ProtossBuilds.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.259259" vertical-offset="6239" max-vertical-offset="11145">
@@ -1114,8 +1078,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1695" max-vertical-offset="4635">
-          <caret line="146" column="111" selection-start-line="146" selection-start-column="111" selection-end-line="146" selection-end-column="111" />
+        <state vertical-scroll-proportion="53.22222" vertical-offset="1902" max-vertical-offset="4635">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2174#2317#0" expanded="true" />
@@ -1128,11 +1092,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/TerranBuilds.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9237288" vertical-offset="5065" max-vertical-offset="9570">
-          <caret line="374" column="16" selection-start-line="374" selection-start-column="16" selection-end-line="375" selection-end-column="9" />
+        <state vertical-scroll-proportion="-7.259259" vertical-offset="314" max-vertical-offset="6285">
+          <caret line="34" column="87" selection-start-line="34" selection-start-column="80" selection-end-line="34" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/TCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1065" max-vertical-offset="4725">
+          <caret line="248" column="28" selection-start-line="248" selection-start-column="28" selection-end-line="248" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/example/sc2voicebuilds/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11904762" vertical-offset="0" max-vertical-offset="630">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
