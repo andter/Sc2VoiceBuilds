@@ -41,6 +41,13 @@
         android:layout_height="300dp"
         android:src="@drawable/tbg"
         android:layout_alignTop="@+id/imageButton1" android:layout_centerHorizontal="true"/>
+    <FrameLayout
+            android:id="@+id/placeholder"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageButton1" android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+    </FrameLayout>
 
 
 </RelativeLayout>

@@ -57,75 +57,24 @@ public class TerranBuilds extends Base_Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_terran_builds);
 
-		displayArray = new String[50];
-		for (int x = 0; x < 50; x++)
-		{
-			displayArray[x] = "";
-		}
-
-        /*
-		myarrayAdapter = new ArrayAdapter<String>(this, R.layout.items, displayArray);
-		lv = (ListView)findViewById(R.id.listView1);
-		lv.setAdapter(myarrayAdapter);
-		f = new DecimalFormat("00");
-
-		btn = (Button) findViewById(R.id.start);
-		txt = (TextView) findViewById(R.id.name);
-		load = (ImageButton) findViewById(R.id.imageButton1);
-		textfield = (TextView) findViewById(R.id.secondsLabel);
-		textfield2 = (TextView) findViewById(R.id.minutesLabel);
-	//	display = (TextView) findViewById(R.id.display);
-	//	minutesDisplay = (TextView) findViewById(R.id.minutesDisplay);
-	//	secondsDisplay = (TextView) findViewById(R.id.secondsDisplay);
-		blah = (TextView) findViewById(R.id.blah);
-		mins = (TextView) findViewById(R.id.minutesLabel);
-		seconds = (TextView) findViewById(R.id.secondsLabel);
-		button2 = (Button) findViewById(R.id.button2);
-		button3 = (Button) findViewById(R.id.button3);
-		startBtn = (Button) findViewById(R.id.start);
-
-		handler = new Handler();
-		runnable = new Runnable() {
-
-			@Override
-			public void run() {
-				while (Running) {
-					try {
-						Thread.sleep(727);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-					handler.post(new Runnable() {
-						@Override
-						public void run() {
-							if (number == 59) {
-								number = 0;
-								minutes++;
-	    						formatter = new DecimalFormat("00");
-								textfield2.setText(String.valueOf(formatter.format(minutes)));
-								textfield.setText(String.valueOf(formatter.format(number)));
-
-							}
-    						formatter = new DecimalFormat("00");
-							number++;
-							textfield.setText(String.valueOf(formatter.format(number)));
-							checkForUpdates(number, minutes);
-
-						}
-					});
-				}
-			}
-
-		};*/
-		// new Thread(runnable).start();
-
+        displayArray = new String[50];
+        for (int x = 0; x < 50; x++)
+        {
+            displayArray[x] = "";
+        }
 	}
 
     public void setupBuild(){
+        Bundle bundle = new Bundle();
+        bundle.putStringArray("soundArray", soundArray);
+        bundle.putIntArray("soundArraySeconds", soundArraySeconds);
+        bundle.putIntArray("soundArrayMinutes", soundArrayMinutes);
+        bundle.putStringArray("displayArray", displayArray);
         TerranFragment frag = new TerranFragment();
+        frag.setArguments(bundle);
         FragmentManager manager = getFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.terran_layout, frag, "TerranFragment");
+        transaction.replace(R.id.placeholder, frag, "TerranFragment");
         transaction.commit();
 
 
@@ -133,8 +82,6 @@ public class TerranBuilds extends Base_Activity {
 
 
 	public void startTimer(View v) {
-        Toast.makeText(getBaseContext(), "TEST", Toast.LENGTH_LONG).show();
-        /*
         int secondSize = soundArraySeconds.length;
         totalSec = soundArraySeconds[secondSize-1];
         if (!Running) {
@@ -150,12 +97,12 @@ public class TerranBuilds extends Base_Activity {
             startBtn.setVisibility(View.INVISIBLE);
             new Thread(runnable).start();
             Running = true;
-        }*/
+        }
 
 	}
 	
 	public void checkForUpdates(int num, int min)
-	{
+    {
         int colorPointer = Color.parseColor("#8030ACD6");
         oldView = lv.getChildAt(current-1);
         newView = lv.getChildAt(current);
@@ -176,12 +123,12 @@ public class TerranBuilds extends Base_Activity {
             }
         }
         else {
-           if (newView != null){
-               newView.setBackgroundColor(colorPointer);
-              if (current > 0) {
-                  oldView.setBackgroundColor(Color.TRANSPARENT);
-              }
-           }
+            if (newView != null){
+                newView.setBackgroundColor(colorPointer);
+                if (current > 0) {
+                    oldView.setBackgroundColor(Color.TRANSPARENT);
+                }
+            }
             String aaa = Integer.toString(num);
             String bleh = Integer.toString(soundArrayMinutes[aNumber]);
             int convert = Integer.parseInt(bleh);
@@ -335,7 +282,7 @@ public class TerranBuilds extends Base_Activity {
                 }
             }
         }
-	    }
+    }
 
 	    
 			//	mp = MediaPlayer.create(getBaseContext(), R.raw.barracks);
@@ -587,8 +534,6 @@ public class TerranBuilds extends Base_Activity {
 			SS++;
 		}
 
-		myarrayAdapter.notifyDataSetChanged();
-
 	}
 
 	public void loadBuild(View v) {
@@ -654,12 +599,8 @@ public class TerranBuilds extends Base_Activity {
                         switch (which) {
 
                             case 0:
-                                setupBuild();/*
-                                btn.setVisibility(View.VISIBLE);
-                                txt.setText(buildName[0]);
-                                txt.setVisibility(View.VISIBLE);
-                                load.setVisibility(View.INVISIBLE);
-                                constructBuild(buildName[0]);*/
+                                constructBuild(buildName[0]);
+                                setupBuild();
                                 break;
 
 				/*
@@ -669,6 +610,7 @@ public class TerranBuilds extends Base_Activity {
 				 */
 
                             default:
+                                constructBuild(buildName[which]);
                                 setupBuild();
                                 /*
                                 btn.setVisibility(View.VISIBLE);
