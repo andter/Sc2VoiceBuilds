@@ -136,12 +136,11 @@ public class TerranFragment extends Fragment {
         newView = lv.getChildAt(current);
         newView.setBackgroundColor(colorPointer);
 
-        Log.i("Called", "BLAH");
         if (aNumber >= soundArraySeconds.length){
+            oldView.setBackgroundColor(Color.TRANSPARENT);
             if (sec == totalSec+2) {
                 if (newView != null){
                     newView.setBackgroundColor(colorPointer);
-                    oldView.setBackgroundColor(Color.TRANSPARENT);
                 }
                 if (complete == null) {
                     Toast.makeText(getActivity().getBaseContext(), "Build Finished", Toast.LENGTH_LONG).show();
@@ -152,14 +151,12 @@ public class TerranFragment extends Fragment {
             }
         }
         else {
-            Log.i("Called", "CALLED!");
             if (newView != null){
                 newView.setBackgroundColor(colorPointer);
                 if (current > 0) {
                     oldView.setBackgroundColor(Color.TRANSPARENT);
                 }
             }
-            Log.i("TIMER", "num = " + sec + "\nSoundArraySeconds" + soundArraySeconds[aNumber]);
             if (min == soundArrayMinutes[aNumber]) {
                 if (sec == soundArraySeconds[aNumber]) {
                     Log.i("EVENT", "Seconds = " + soundArraySeconds[aNumber] + "\nMinutes = " + soundArrayMinutes[aNumber]);

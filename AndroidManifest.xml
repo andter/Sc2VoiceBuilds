@@ -77,6 +77,8 @@
             android:screenOrientation="portrait">>
         </activity>
         <activity android:name=".UploadBuilds"/>
+        <activity android:name=".BuildLoader"/>
+        <activity android:name=".BuildCreator"/>
     </application>
 
 </manifest>

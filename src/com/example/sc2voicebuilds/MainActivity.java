@@ -1,8 +1,6 @@
 package com.example.sc2voicebuilds;
 
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -28,20 +26,23 @@ public class MainActivity extends Base_Activity {
 	
 	public void zergClick(View v)
 	{
-		Intent intent = new Intent(v.getContext(), ZergBuilds.class);
+		Intent intent = new Intent(v.getContext(), BuildLoader.class);
+        intent.putExtra("race", 3);
 		v.getContext().startActivity(intent);
 	}
 	
 	public void terranClick(View v)
 	{
-		Intent intent = new Intent(v.getContext(), TerranBuilds.class);
+		Intent intent = new Intent(v.getContext(), BuildLoader.class);
+        intent.putExtra("race", 1);
 		v.getContext().startActivity(intent);
 		
 	}
 	
 	public void protossClick(View v)
 	{
-		Intent intent = new Intent(v.getContext(), ProtossBuilds.class);
+		Intent intent = new Intent(v.getContext(), BuildLoader.class);
+        intent.putExtra("race", 2);
 		v.getContext().startActivity(intent);
 	}
 
@@ -67,19 +68,22 @@ public class MainActivity extends Base_Activity {
 			//	Toast.makeText(getApplicationContext(), races[which], Toast.LENGTH_SHORT).show();
 				if(races[which] == "Terran")
 				{
-					Intent intent = new Intent(d.getContext(), TCreator.class);
+					Intent intent = new Intent(d.getContext(), BuildCreator.class);
+                    intent.putExtra("race", 1);
 					d.getContext().startActivity(intent);
 				}
 				
 				if(races[which] == "Zerg")
 				{
-					Intent intent = new Intent(d.getContext(), ZCreator.class);
+					Intent intent = new Intent(d.getContext(), BuildCreator.class);
+                    intent.putExtra("race", 3);
 					d.getContext().startActivity(intent);
 				}
 				
 				if(races[which] == "Protoss")
 				{
-					Intent intent = new Intent(d.getContext(), PCreator.class);
+					Intent intent = new Intent(d.getContext(), BuildCreator.class);
+                    intent.putExtra("race", 2);
 					d.getContext().startActivity(intent);
 				}
 			}
