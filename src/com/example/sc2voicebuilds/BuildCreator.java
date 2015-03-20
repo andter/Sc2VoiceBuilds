@@ -81,21 +81,77 @@ public class BuildCreator extends Activity {
     public void setupProtossUI(){
         TextView racePrompt = (TextView)findViewById(R.id.createRacePrompt);
         racePrompt.setText("Create Protoss Build");
-    }
 
-    //Set up UI components for terran race
-    public void setupTerranUI(){
-        //Setup Structure Spinner
         myarrayAdapter = new CustomAdapter(this, R.layout.row, build.display);
 
         lv = (ListView)findViewById(R.id.buildListView);
         lv.setAdapter(myarrayAdapter);
 
+        structuresSpinner = (Spinner) findViewById(R.id.structuresSpinner);
+        structuresArray = new String[17];
+        structuresArray[0] = "Structures";
+        structuresArray[1] = "Gateway";
+        structuresArray[2] = "Robotics Facility";
+        structuresArray[3] = "Stargate";
+        structuresArray[4] = "Pylon";
+        structuresArray[5] = "Nexus";
+        structuresArray[6] = "Cybernetics Core";
+        structuresArray[7] = "Fleet Beacon";
+        structuresArray[8] = "Assimilator";
+        structuresArray[9] = "Forge";
+        structuresArray[10] = "Fleet Beacon";
+        structuresArray[11] = "Twilight Council";
+        structuresArray[12] = "Photon Cannon";
+        structuresArray[13] = "Templar Archives";
+        structuresArray[14] = "Warpgate Research";
+        structuresArray[15] = "Robotics Bay";
+        structuresArray[16] = "Dark shrine";
+        ArrayAdapter structuresAdapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, structuresArray);
+        structuresSpinner.setAdapter(structuresAdapter);
+
+        //Setup Unit Spinner
+        unitsSpinner = (Spinner) findViewById(R.id.unitsSpinner);
+        unitsArray = new String[19];
+        unitsArray[0] = "Units---";
+        unitsArray[1] = "Probe";
+        unitsArray[2] = "Zealot";
+        unitsArray[3] = "Stalker";
+        unitsArray[4] = "Sentry";
+        unitsArray[5] = "Observer";
+        unitsArray[6] = "Immortal";
+        unitsArray[7] = "Warp Prism";
+        unitsArray[8] = "Colossus";
+        unitsArray[9] = "Pheonix";
+        unitsArray[10] = "Void Ray";
+        unitsArray[11] = "High Templar";
+        unitsArray[12] = "Dark Templar";
+        unitsArray[13] = "Archon";
+        unitsArray[14] = "Carrier";
+        unitsArray[15] = "Mother Ship Core";
+        unitsArray[16] = "MotherShip";
+        unitsArray[17] = "2 Workers on Gas";
+        unitsArray[18] = "3 workers on gas";
+
+        ArrayAdapter unitsAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, unitsArray);
+        unitsSpinner.setAdapter(unitsAdapter);
+
+    }
+
+    //Set up UI components for terran race
+    public void setupTerranUI(){
+        //Setup Structure Spinner
         TextView racePrompt = (TextView)findViewById(R.id.createRacePrompt);
         racePrompt.setText("Create Terran Build");
+
+        myarrayAdapter = new CustomAdapter(this, R.layout.row, build.display);
+
+        lv = (ListView)findViewById(R.id.buildListView);
+        lv.setAdapter(myarrayAdapter);
+
         structuresSpinner = (Spinner) findViewById(R.id.structuresSpinner);
         structuresArray = new String[16];
-        structuresArray[0] = "Structures---";
+        structuresArray[0] = "Structures";
         structuresArray[1] = "Barracks";
         structuresArray[2] = "Factory";
         structuresArray[3] = "Starport";
@@ -118,7 +174,7 @@ public class BuildCreator extends Activity {
         //Setup Unit Spinner
         unitsSpinner = (Spinner) findViewById(R.id.unitsSpinner);
         unitsArray = new String[15];
-        unitsArray[0] = "Units---";
+        unitsArray[0] = "Units";
         unitsArray[1] = "SCV";
         unitsArray[2] = "Marine";
         unitsArray[3] = "Marauder";
