@@ -17,5 +17,10 @@ public class Node {
     public Node getNode(){
         return this;
     }
+
+    @Override
+    public String toString(){
+        return item + "{" + minutes + ":" + seconds + "}";
+    }
 }
 

@@ -1,12 +1,18 @@
 package com.example.sc2voicebuilds;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
+import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 
 /**
@@ -14,7 +20,7 @@ import java.text.DecimalFormat;
  */
 public class BuildCreator extends Activity {
     MyBuild build;
-    int race, seconds, minutes;
+    int race, seconds, minutes, lastSecond, lastMinute;
     Spinner structuresSpinner, unitsSpinner;
     String [] structuresArray, unitsArray;
     Handler handler;
@@ -25,7 +31,85 @@ public class BuildCreator extends Activity {
     ListView lv;
     DecimalFormat formatter;
 
-    @Override
+
+
+    @Override	public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.creator_bar, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch (item.getItemId())
+        {
+            case R.id.home:
+                Intent intent = new Intent(this, MainActivity.class);
+                this.startActivity(intent);
+                return true;
+
+            //save
+            case R.id.save:
+                AlertDialog.Builder editalert = new AlertDialog.Builder(this);
+
+                editalert.setTitle("Save");
+                editalert.setMessage("Enter Name of Build to Save");
+
+
+                final EditText input = new EditText(this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.FILL_PARENT,
+                        LinearLayout.LayoutParams.FILL_PARENT);
+                input.setLayoutParams(lp);
+                editalert.setView(input);
+
+                editalert.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        String inputString = new String(input.getText().toString());
+                        String filename = "";
+
+                        if (race == 1) {
+                            filename = "terran.dat";
+                        } else if (race == 2) {
+                            filename = "protoss.dat";
+                        } else if (race == 3) {
+                            filename = "zerg.dat";
+                        }
+
+                        FileOutputStream outputStream;
+                        if (inputString.contains("$")) {
+                            Toast.makeText(getBaseContext(), "Invalid Title", Toast.LENGTH_SHORT).show();
+                        } else {
+                            try {
+                                outputStream = openFileOutput(filename, MODE_APPEND);
+                                String temp = "$";
+                                temp += inputString + "\n";
+                                temp += build.toString();
+                                temp += "end";
+                                Toast.makeText(getBaseContext(), temp, Toast.LENGTH_LONG).show();
+                                outputStream.write(temp.getBytes());
+                                outputStream.close();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            Toast.makeText(getBaseContext(), "Saved", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+                editalert.setNegativeButton("Close", new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int whichButton){
+                    }
+                });
+
+                editalert.show();
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build_creator);
@@ -253,17 +337,21 @@ public class BuildCreator extends Activity {
 
     public void addStructure(View v){
         int position = structuresSpinner.getSelectedItemPosition();
-        if(position > 0 && (seconds > 0 || minutes > 0)){
+        if(position > 0 && (seconds > 0 || minutes > 0) && (seconds != lastSecond || minutes != lastMinute)){
             build.addNode(structuresArray[position], minutes, seconds);
             updateUI();
+            lastSecond = seconds;
+            lastMinute = minutes;
         }
     }
 
     public void addUnit(View v){
         int position = unitsSpinner.getSelectedItemPosition();
-        if(position > 0 && (seconds > 0 || minutes > 0)) {
+        if(position > 0 && (seconds > 0 || minutes > 0) && (seconds != lastSecond || minutes != lastMinute)) {
             build.addNode(unitsArray[position], minutes, seconds);
             updateUI();
+            lastSecond = seconds;
+            lastMinute = minutes;
         }
     }
 
