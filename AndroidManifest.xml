@@ -71,11 +71,6 @@
             android:label="@string/title_activity_base__creator"
             android:screenOrientation="portrait">>
         </activity>
-        <activity
-            android:name="com.example.sc2voicebuilds.Donators"
-            android:label="@string/title_activity_donators"
-            android:screenOrientation="portrait">>
-        </activity>
         <activity android:name=".UploadBuilds"/>
         <activity android:name=".BuildLoader"/>
         <activity android:name=".BuildCreator"/>
