@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SC2VB/SC2VB.iml" filepath="$PROJECT_DIR$/SC2VB/SC2VB.iml" />
       <module fileurl="file://$PROJECT_DIR$/Starcraft2VoiceBuilds.iml" filepath="$PROJECT_DIR$/Starcraft2VoiceBuilds.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Starcraft2VoiceBuilds-bu.iml" filepath="$PROJECT_DIR$/Starcraft2VoiceBuilds-bu.iml" />
     </modules>
   </component>
 </project>
