@@ -30,6 +30,14 @@ public class MyBuild {
         size = size-1;
     }
 
+    public String toString(){
+        String temp = "";
+        for(Node n : build){
+            temp += n.toString() + "\n";
+        }
+        return temp;
+    }
+
     public int getSize(){
         return build.size();
     }

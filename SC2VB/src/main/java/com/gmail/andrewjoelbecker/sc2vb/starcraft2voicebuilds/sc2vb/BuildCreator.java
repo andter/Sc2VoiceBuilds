@@ -1,5 +1,7 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
 
+import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 
 /**
@@ -19,6 +22,7 @@ public class BuildCreator extends Base_Activity {
     int race, seconds, minutes, lastSecond, lastMinute;
     Spinner structuresSpinner, unitsSpinner;
     String[] structuresArray, unitsArray;
+    String string;
     Handler handler;
     Runnable runnable;
     Boolean Running;
@@ -83,7 +87,59 @@ public class BuildCreator extends Base_Activity {
     }
 
     public void saveBuild(){
-        Toast.makeText(getBaseContext(), "Saved", Toast.LENGTH_LONG).show();
+        AlertDialog.Builder editAlert = new AlertDialog.Builder(this);
+
+        editAlert.setTitle("Save");
+        editAlert.setMessage("Enter Name of Build");
+        final EditText input = new EditText(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.FILL_PARENT);
+        input.setLayoutParams(lp);
+        editAlert.setView(input);
+        editAlert.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                String inputString = new String(input.getText().toString());
+                if (!inputString.contains("$")) {
+                    String filename = "";
+                    if (race == 1) {
+                        filename = "terran.dat";
+                    } else if (race == 2) {
+                        filename = "protoss.dat";
+                    } else if (race == 3) {
+                        filename = "zerg.dat";
+                    }
+                    FileOutputStream outputStream;
+                    string = "$";
+                    string += inputString + "\n";
+                    string += build.toString();
+                    Toast.makeText(getBaseContext(), string, Toast.LENGTH_LONG).show();
+
+                    try {
+                        outputStream = openFileOutput(filename, MODE_APPEND);
+                        outputStream.write(string.getBytes());
+                        outputStream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getBaseContext(), "Saved", Toast.LENGTH_LONG).show();
+
+                    string = "";
+                }
+                else{
+                    Toast.makeText(getBaseContext(), "Invalid Name", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });
+        editAlert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        editAlert.show();
     }
     //Perform basic zerg Setup
     public void zergSetup(){

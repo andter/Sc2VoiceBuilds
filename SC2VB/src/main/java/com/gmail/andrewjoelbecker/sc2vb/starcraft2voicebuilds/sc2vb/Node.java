@@ -14,8 +14,9 @@ public class Node {
         this.seconds = seconds;
     }
 
-    public Node getNode(){
-        return this;
+    @Override
+    public String toString(){
+        return (item + "{" + minutes + ":" + seconds + "}");
     }
 }
 
