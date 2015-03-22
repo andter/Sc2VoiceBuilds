@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ProjectModuleManager">
-    <modules>
-      <module fileurl="file://$PROJECT_DIR$/Sc2VB.iml" filepath="$PROJECT_DIR$/Sc2VB.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Sc2VoiceBuilds.iml" filepath="$PROJECT_DIR$/Sc2VoiceBuilds.iml" />
-    </modules>
-  </component>
-</project>
