@@ -1,6 +1,8 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
 import android.app.AlertDialog;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +22,7 @@ import java.util.Scanner;
  */
 public class BuildLoader extends Base_Activity {
     ArrayList<String> buildNames;
-    MyBuild build;
+    ArrayList<String> build;
     int race;
     String allBuilds;
 
@@ -31,12 +33,12 @@ public class BuildLoader extends Base_Activity {
 
         Intent i = getIntent();
         race = i.getIntExtra("race", 0);
-        build = new MyBuild(race);
         Toast.makeText(getBaseContext(), "Race " + race, Toast.LENGTH_SHORT).show();
     }
 
     public void initializeBuild(int i){
-        String build = "";
+        String title = buildNames.get(i);
+        build = new ArrayList<String>();
         Scanner scan = new Scanner(allBuilds);
 
         boolean readingBuild = true, read = true;
@@ -50,7 +52,7 @@ public class BuildLoader extends Base_Activity {
                             if (temp.contains("$")) {
                                 read = false;
                             } else {
-                                build += temp + "\n";
+                                build.add(temp + "\n");
                             }
                         }
                     } else {
@@ -60,13 +62,18 @@ public class BuildLoader extends Base_Activity {
             }
             readingBuild = false;
         }
-        Toast.makeText(getBaseContext(), build, Toast.LENGTH_LONG).show();
-       /* String s = "";
-        while(scan.hasNext()){
-            s += scan.nextLine();
-        }
+        displayBuild(title);
+    }
 
-        Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();*/
+    public void displayBuild(String t){
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("build", build);
+        bundle.putString("buildName", t);
+        BuildFragment frag = new BuildFragment();
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.add(R.id.placeholder, frag, "");
+        transaction.commit();
     }
 
     public void loadBuild(View v) {

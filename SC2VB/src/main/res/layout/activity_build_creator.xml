@@ -11,6 +11,7 @@
             android:textSize="@dimen/text_size"
             android:text="Create a terran build"
             android:id="@+id/createRacePrompt"
+            android:textColor="@color/black"
             />
     <LinearLayout
             android:orientation="horizontal"

@@ -3,10 +3,7 @@ package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 
@@ -17,6 +14,7 @@ public class MainActivity extends Base_Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void zergClick(View v)

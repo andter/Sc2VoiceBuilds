@@ -8,7 +8,8 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context=".TerranBuilds" >
+                tools:context=".TerranBuilds"
+        >
 
     <TextView
             android:id="@+id/buildType"
@@ -16,7 +17,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:text="Terran Build:"
-            android:textSize="20dp" />
+            android:textSize="20dp"
+            android:textColor="@color/black"/>
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -44,12 +46,6 @@
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center">
-        <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:src="@drawable/tbg"
-                android:layout_gravity="center"/>
     </LinearLayout>
 
 
