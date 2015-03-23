@@ -30,17 +30,7 @@ public class Base_Activity extends ActionBarActivity {
                 i = new Intent(this, MainActivity.class);
                 this.startActivity(i);
                 return true;
-/*
-            case R.id.about:
-                i = new Intent(this, About.class);
-                this.startActivity(i);
-                return true;
 
-            case R.id.supportus:
-                Log.i("MENU", "Support Us Clicked");
-                i = new Intent(this, coming_soon.class);
-                this.startActivity(i);
-                return true;*/
 
             default:
                 return super.onOptionsItemSelected(item);

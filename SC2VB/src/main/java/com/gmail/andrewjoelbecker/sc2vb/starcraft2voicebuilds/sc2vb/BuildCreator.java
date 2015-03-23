@@ -101,7 +101,7 @@ public class BuildCreator extends Base_Activity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 String inputString = new String(input.getText().toString());
-                if (!inputString.contains("$")) {
+                if (!(inputString.contains("$") || inputString.equals(""))) {
                     String filename = "";
                     if (race == 1) {
                         filename = "terran.dat";
