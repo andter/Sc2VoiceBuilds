@@ -42,7 +42,6 @@ public class BuildCreator extends Base_Activity {
 
         race = i.getIntExtra("race", 0);
         build = new MyBuild(race);
-        Toast.makeText(getBaseContext(), "Race " + i.getIntExtra("race", 0), Toast.LENGTH_SHORT).show();
 
         if(race == 1){
             terranSetup();
@@ -305,7 +304,7 @@ public class BuildCreator extends Base_Activity {
 
     public void setupThread(){
         secondsTV = (TextView)findViewById(R.id.secondsOutput);
-        minutesTV = (TextView)findViewById(R.id.minutesOutput);
+        minutesTV = (TextView)findViewById(R.id.minutesLabel);
         Running = false;
 
         handler = new Handler();

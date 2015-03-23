@@ -33,7 +33,6 @@ public class BuildLoader extends Base_Activity {
 
         Intent i = getIntent();
         race = i.getIntExtra("race", 0);
-        Toast.makeText(getBaseContext(), "Race " + race, Toast.LENGTH_SHORT).show();
     }
 
     public void initializeBuild(int i){
@@ -66,14 +65,16 @@ public class BuildLoader extends Base_Activity {
     }
 
     public void displayBuild(String t){
-        Bundle bundle = new Bundle();
-        bundle.putStringArrayList("build", build);
-        bundle.putString("buildName", t);
-        BuildFragment frag = new BuildFragment();
-        FragmentManager manager = getFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.add(R.id.placeholder, frag, "");
-        transaction.commit();
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList("build", build);
+            bundle.putString("buildName", t);
+            bundle.putInt("race", race);
+            BuildFragment frag = new BuildFragment();
+            frag.setArguments(bundle);
+            FragmentManager manager = getFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.placeholder, frag, "");
+            transaction.commit();
     }
 
     public void loadBuild(View v) {
@@ -102,8 +103,6 @@ public class BuildLoader extends Base_Activity {
                     readString = buffReader.readLine();
                 }
                 inputReader.close();
-
-                Toast.makeText(getBaseContext(), allBuilds, Toast.LENGTH_LONG).show();
 
                 if(buildNames.size() > 0){
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);

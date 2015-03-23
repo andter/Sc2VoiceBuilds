@@ -30,6 +30,10 @@ public class MyBuild {
         size = size-1;
     }
 
+    public Node getNode(int i){
+        return build.get(i);
+    }
+
     public String toString(){
         String temp = "";
         for(Node n : build){

@@ -4,6 +4,13 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+    <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/tbg"
+            android:id="@+id/imageView3"
+            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -11,15 +18,57 @@
             android:text="Build Name:"
             android:id="@+id/textView"
             android:layout_gravity="center"
-            android:textColor="@color/black"/>
-    <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:src="@drawable/tbg"
-            android:id="@+id/imageView3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+            android:textColor="@color/black" android:layout_alignParentTop="true"
+            android:layout_alignLeft="@+id/imageView3" android:layout_alignParentLeft="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/zeroes"
+
+            android:id="@+id/minutesLabel"
+            android:layout_below="@+id/textView" android:layout_toLeftOf="@+id/colon"
+            android:layout_toStartOf="@+id/colon"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/colon"
+            android:text="@string/colon"
+            android:layout_alignTop="@+id/minutesLabel" android:layout_centerHorizontal="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/zeroes"
+            android:id="@+id/secondsLabel"
+            android:layout_alignTop="@+id/colon" android:layout_toRightOf="@+id/colon"
+            android:layout_toEndOf="@+id/colon"/>
+
     <ListView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/listView" android:layout_below="@+id/textView" android:layout_alignParentLeft="true"
+            android:id="@+id/listView"
+            android:layout_below="@+id/start" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start"
+            android:id="@+id/start"
+            android:layout_below="@+id/minutesLabel" android:layout_alignRight="@+id/minutesLabel"
+            android:layout_alignEnd="@+id/minutesLabel"
+            android:background="@drawable/custom_button"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stop"
+            android:id="@+id/stop"
+            android:layout_alignTop="@+id/start" android:layout_toRightOf="@+id/colon"
+            android:layout_toEndOf="@+id/colon"
+            android:background="@drawable/custom_button"/>
+
 </RelativeLayout>
