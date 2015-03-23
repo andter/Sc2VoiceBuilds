@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -75,6 +76,14 @@ public class BuildLoader extends Base_Activity {
             FragmentTransaction transaction = manager.beginTransaction();
             transaction.replace(R.id.placeholder, frag, "");
             transaction.commit();
+    }
+
+    public void displayDownloadables(View v){
+        DownloadFragment frag = new DownloadFragment();
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.placeholder, frag, "");
+        transaction.commit();
     }
 
     public void loadBuild(View v) {
