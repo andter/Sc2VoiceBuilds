@@ -1,5 +1,7 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
+import com.parse.Parse;
+
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 

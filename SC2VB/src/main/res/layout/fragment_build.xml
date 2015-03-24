@@ -7,8 +7,7 @@
     <ImageView
             android:layout_width="300dp"
             android:layout_height="300dp"
-            android:src="@drawable/tbg"
-            android:id="@+id/imageView3"
+            android:id="@+id/backgroundView"
             android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
 
     <TextView

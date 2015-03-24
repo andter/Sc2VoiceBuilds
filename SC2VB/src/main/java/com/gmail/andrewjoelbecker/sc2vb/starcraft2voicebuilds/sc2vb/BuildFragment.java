@@ -33,7 +33,7 @@ public class BuildFragment extends Fragment{
     TextView minutesTV, secondsTV;
     View newView, oldView;
     Node temp;
-
+    ImageView background;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class BuildFragment extends Fragment{
         lv = (ListView)v.findViewById(R.id.listView);
         lv.setAdapter(myarrayAdapter);
 
+        background = (ImageView)v.findViewById(R.id.backgroundView);
         minutesTV = (TextView)v.findViewById(R.id.minutesLabel);
         secondsTV = (TextView)v.findViewById(R.id.secondsLabel);
         stopButton = (Button) v.findViewById(R.id.stop);
@@ -72,6 +73,16 @@ public class BuildFragment extends Fragment{
                 startTimer();
             }
         });
+
+        if(race == 1){
+            background.setImageResource(R.drawable.tbg);
+        }
+        else if(race == 2){
+            background.setImageResource(R.drawable.pbg);
+        }
+        else if (race == 3){
+            background.setImageResource(R.drawable.zbg);
+        }
 
 
 

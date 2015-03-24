@@ -16,7 +16,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listView"
-            android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ll" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/ll" android:visibility="invisible">
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back"
+            android:id="@+id/back"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                android:id="@+id/save"
+                android:background="@drawable/custom_button"/>
+    </LinearLayout>
 
 </RelativeLayout>

@@ -3,8 +3,11 @@ package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -78,12 +81,20 @@ public class BuildLoader extends Base_Activity {
             transaction.commit();
     }
 
-    public void displayDownloadables(View v){
-        DownloadFragment frag = new DownloadFragment();
-        FragmentManager manager = getFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.placeholder, frag, "");
-        transaction.commit();
+    public void displayDownloadables(View v) {
+        if (isNetworkConnected()) {
+            Bundle bundle = new Bundle();
+            bundle.putInt("race", race);
+            DownloadFragment frag = new DownloadFragment();
+            frag.setArguments(bundle);
+            FragmentManager manager = getFragmentManager();
+            FragmentTransaction transaction = manager.beginTransaction();
+            transaction.replace(R.id.placeholder, frag, "");
+            transaction.commit();
+        }
+        else{
+            Toast.makeText(getBaseContext(), "It appears you aren't connected to the internet!", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void loadBuild(View v) {
@@ -138,6 +149,16 @@ public class BuildLoader extends Base_Activity {
         else{
             Toast.makeText(getBaseContext(), "Error retrieving race", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo ni = cm.getActiveNetworkInfo();
+        if (ni == null) {
+            // There are no active networks.
+            return false;
+        } else
+            return true;
     }
 
 }
