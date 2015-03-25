@@ -18,7 +18,7 @@
             android:id="@+id/textView"
             android:layout_gravity="center"
             android:textColor="@color/black" android:layout_alignParentTop="true"
-            android:layout_alignLeft="@+id/imageView3" android:layout_alignParentLeft="true"/>
+            android:layout_alignLeft="@+id/backgroundView" android:layout_alignParentLeft="true"/>
 
     <TextView
             android:layout_width="wrap_content"

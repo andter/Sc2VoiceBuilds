@@ -63,16 +63,22 @@ public class DownloadFragment extends Fragment {
 
         if(race == 1){
             parseClass = "Build";
+            ImageView background = (ImageView)v.findViewById(R.id.downloadImage);
+            background.setImageResource(R.drawable.tbg);
         }
         else if(race == 2){
             parseClass = "PBuild";
+            ImageView background = (ImageView)v.findViewById(R.id.downloadImage);
+            background.setImageResource(R.drawable.pbg);
         }
         else if(race == 3){
             parseClass = "ZBuild";
+            ImageView background = (ImageView)v.findViewById(R.id.downloadImage);
+            background.setImageResource(R.drawable.zbg);
         }
 
         Log.i("TAG", Integer.toString(race));
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Build");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery(parseClass);
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (objects == null) {
@@ -97,7 +103,7 @@ public class DownloadFragment extends Fragment {
         } else if (race == 3) {
             filename = "zerg.dat";
         }
-        string = "$"; 
+        string = "$";
         string += buildNames.get(currentPosition) + "\n";
         string += build.toString();
         Toast.makeText(getActivity().getBaseContext(), string, Toast.LENGTH_LONG).show();

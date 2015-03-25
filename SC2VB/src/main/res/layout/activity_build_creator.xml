@@ -9,7 +9,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="@dimen/text_size"
-            android:text="Create a terran build"
+            android:text=""
             android:id="@+id/createRacePrompt"
             android:textColor="@color/black"
             />

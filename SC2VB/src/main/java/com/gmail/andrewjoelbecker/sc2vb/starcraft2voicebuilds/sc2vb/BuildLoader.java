@@ -12,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -37,6 +38,19 @@ public class BuildLoader extends Base_Activity {
 
         Intent i = getIntent();
         race = i.getIntExtra("race", 0);
+
+        if(race == 1){
+            TextView tv = (TextView)findViewById(R.id.buildType);
+            tv.setText("TerranBuild:");
+        }
+        if(race == 2){
+            TextView tv = (TextView)findViewById(R.id.buildType);
+            tv.setText("ProtossBuild:");
+        }
+        if(race == 3){
+            TextView tv = (TextView)findViewById(R.id.buildType);
+            tv.setText("ZergBuild:");
+        }
     }
 
     public void initializeBuild(int i){

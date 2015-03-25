@@ -8,12 +8,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
 
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/mainll" android:gravity="center_horizontal">
     <ImageButton
         android:id="@+id/imageButton1"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         android:src="@drawable/zergbtn" 
         android:onClick="zergClick"/>
@@ -22,8 +21,6 @@
         android:id="@+id/imageButton2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignTop="@+id/imageButton1"
-        android:layout_toRightOf="@+id/imageButton1"
         android:background="@android:color/transparent"
         android:src="@drawable/terranbtn" 
         android:onClick="terranClick"/>
@@ -32,21 +29,21 @@
         android:id="@+id/imageButton3"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignBottom="@+id/imageButton2"
-        android:layout_toRightOf="@+id/imageButton2"
         android:background="@android:color/transparent"
         android:src="@drawable/protossbtn" 
         android:onClick="protossClick"/>
+
+    </LinearLayout>
 
         <TextView
             android:id="@+id/userlbl"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imageButton1"
+            android:layout_below="@+id/mainll"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="17dp"
-            android:text="Select Race to View Builds"
-            android:textSize="16dp" />
+            android:text="@string/selectRace"
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/button1"
@@ -55,7 +52,7 @@
             android:layout_below="@+id/userlbl"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="16dp"
-            android:text="Create New Build" 
+            android:text="@string/createBuild"
             android:background="@drawable/custom_button"
             android:onClick="selectRace"/>
 
@@ -65,7 +62,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_button"
-            android:text="Upload a Build"
+            android:text="@string/uploadBuild"
             android:layout_below="@+id/button1"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"

@@ -154,7 +154,15 @@ public class BuildFragment extends Fragment{
                 retrieved = true;
             }
             if(temp.seconds == s && temp.minutes == m){
-                playSound();
+                if(race == 1) {
+                    playTerranSound();
+                }
+                else if(race == 2){
+                    playProtossSound();
+                }
+                else if(race == 3){
+                    playZergSound();
+                }
                 currentNode++;
                 retrieved = false;
             }
@@ -173,7 +181,7 @@ public class BuildFragment extends Fragment{
         }
     }
 
-    public void playSound(){
+    public void playTerranSound(){
         String item = build.getNode(currentNode).item.toLowerCase();
 
         if (item.equals("barracks")) {
@@ -311,6 +319,186 @@ public class BuildFragment extends Fragment{
             final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.widowmine);
             mp.start();
         }
+    }
+
+    public void playProtossSound(){
+        String item = build.getNode(currentNode).item.toLowerCase();
+
+        if (item.equals("probe")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.probe);
+            mp.start();
+        }
+
+        if (item.equals("zealot")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.zealot);
+            mp.start();
+        }
+
+        if (item.equals("stalker")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.stalker);
+            mp.start();
+        }
+
+        if (item.equals("sentry")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.sentry);
+            mp.start();
+        }
+
+        if (item.equals("observer")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.observer);
+            mp.start();
+        }
+
+        if (item.equals("immortal")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.immortal);
+            mp.start();
+        }
+
+        if (item.equals("gateway")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.gateway);
+            mp.start();
+        }
+
+        if (item.equals("warpprism")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.warpprism);
+            mp.start();
+        }
+
+        if (item.equals("colossus")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.collossus);
+            mp.start();
+        }
+
+        if (item.equals("pheonix")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.pheonix);
+            mp.start();
+        }
+
+        if (item.equals("voidray")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.voidray);
+            mp.start();
+        }
+
+        if (item.equals("hightemplar")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.hightemplar);
+            mp.start();
+        }
+
+        if (item.equals("missileturret")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.missileturret);
+            mp.start();
+        }
+
+        if (item.equals("darktemplar")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.darktemplar);
+            mp.start();
+        }
+
+			/*	if(soundArray[aNumber].equals("archon"))
+				{
+				    final MediaPlayer mp = MediaPlayer.create(this, R.raw.archon);
+					mp.start();
+				}*/
+
+        if (item.equals("carrier")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.carrier);
+            mp.start();
+        }
+
+        if (item.equals("reactor")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.reactor);
+            mp.start();
+        }
+
+        if (item.equals("mothershipcore")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.mothershipcore);
+            mp.start();
+        }
+
+				/*if(soundArray[aNumber].equals("mothership"))
+				{
+				    final MediaPlayer mp = MediaPlayer.create(this, R.raw.mothership);
+					mp.start();
+				}*/
+
+        if (item.equals("scv")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.scv);
+            mp.start();
+        }
+
+        if (item.equals("roboticsfacility")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.roboticsfacility);
+            mp.start();
+        }
+
+        if (item.equals("stargate")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.stargate);
+            mp.start();
+        }
+
+        if (item.equals("pylon")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.pylon);
+            mp.start();
+        }
+
+        if (item.equals("nexus")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.nexus);
+            mp.start();
+        }
+
+        if (item.equals("thor")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.thor);
+            mp.start();
+        }
+
+        if (item.equals("cyberneticscore")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.cyberneticscore);
+            mp.start();
+        }
+
+        if (item.equals("fleetbeacon")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.fleetbeacon);
+            mp.start();
+        }
+
+        if (item.equals("assimilator")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.assimilator);
+            mp.start();
+        }
+
+        if (item.equals("forge")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.forge);
+            mp.start();
+        }
+
+        if (item.equals("twilightcouncil")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.twilightcouncil);
+            mp.start();
+        }
+
+        if (item.equals("photoncannon")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.photoncannon);
+            mp.start();
+        }
+
+        if (item.equals("templararchives")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.templararchives);
+            mp.start();
+        }
+
+        if (item.equals("roboticsbay")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.roboticsbay);
+            mp.start();
+        }
+
+        if (item.equals("darkshrine")) {
+            final MediaPlayer mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.darkshrine);
+            mp.start();
+        }
+    }
+
+    public void playZergSound(){
+
     }
 
     public void createBuild(){

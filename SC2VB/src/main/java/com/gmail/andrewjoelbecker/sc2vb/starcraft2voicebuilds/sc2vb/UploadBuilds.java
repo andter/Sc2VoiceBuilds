@@ -1,11 +1,22 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TextView;
+import android.util.Log;
+import android.view.View;
+import android.widget.*;
+import com.parse.*;
 
-import java.io.FileInputStream;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by drew on 3/11/15.
@@ -14,13 +25,16 @@ public class UploadBuilds extends Base_Activity {
     TextView output, buildTextView;
     Spinner s;
     String[] races, constructedBuild;
-    int myTemp, numberOfRequests, requestsLeft;
-    String selectedBuild, datax, race, email;
+    int myTemp, numberOfRequests, requestsLeft, race;
+    String selectedBuild, datax, email;
     FileInputStream fIn;
     String[] buildName;
     static Boolean uploaded;
+    ArrayList<String> buildNames = new ArrayList<String>();
+    ArrayList<String> build = new ArrayList<String>();
+    String allBuilds;
 
-    TextView tv, tv2;
+    TextView tv, nameView;
     Spinner spin;
     Button btn, btn2;
 
@@ -28,8 +42,8 @@ public class UploadBuilds extends Base_Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-  //      setContentView(R.layout.activity_upload_builds);
-/*
+        setContentView(R.layout.activity_upload_builds);
+
         numberOfRequests = 4;
         requestsLeft = 5;
         races = new String[3];
@@ -52,24 +66,23 @@ public class UploadBuilds extends Base_Activity {
         else{
             //Enable all views
             tv = (TextView) findViewById(R.id.textv);
-            tv2 = (TextView) findViewById(R.id.myBuild);
+            nameView = (TextView) findViewById(R.id.myBuild);
             spin = (Spinner) findViewById(R.id.spinner1);
             btn = (Button) findViewById(R.id.button1);
             btn2 = (Button) findViewById(R.id.button);
 
             tv.setVisibility(View.VISIBLE);
-            tv2.setVisibility(View.VISIBLE);
+            nameView.setVisibility(View.VISIBLE);
             spin.setVisibility(View.VISIBLE);
             btn.setVisibility(View.VISIBLE);
             btn2.setVisibility(View.VISIBLE);
-            /*
-                Parse.enableLocalDatastore(this);
-                Parse.initialize(this, "v9D4hN8qNtXWTE4z4aNOHZsXkhBlVW29Iucw1Ll9", "bw5EcOR0neExSVWiMzrd8xdj1sqeSAmTSWlnZTdC");*/
+
+                Parse.initialize(this, "v9D4hN8qNtXWTE4z4aNOHZsXkhBlVW29Iucw1Ll9", "bw5EcOR0neExSVWiMzrd8xdj1sqeSAmTSWlnZTdC");
 
 
 
-        /*
-        email = getEmail(this);
+
+            email = getEmail(this);
 
 
         }
@@ -80,7 +93,6 @@ public class UploadBuilds extends Base_Activity {
             Toast.makeText(getBaseContext(), "Need a registered email associated to account", Toast.LENGTH_LONG).show();
         }
         else {
-
             ParseQuery<ParseObject> query = ParseQuery.getQuery("User");
             query.whereEqualTo("Email", email);
             query.getFirstInBackground(new GetCallback<ParseObject>() {
@@ -118,10 +130,24 @@ public class UploadBuilds extends Base_Activity {
     }
     public boolean uploadBuild(){
         uploaded = false;
-        ParseObject testObject = new ParseObject("Build");
-        testObject.put("Name", selectedBuild);
-        testObject.put("Race", race);
-        testObject.addAllUnique("Entity", Arrays.asList(constructedBuild));
+        String object = "";
+        String uploadedRace = "";
+        if(race == 1){
+            object = "Build";
+            uploadedRace = "Terran";
+        }
+        else if(race == 2){
+            object = "PBuild";
+            uploadedRace = "Protoss";
+        }
+        else if(race == 3){
+            object = "ZBuild";
+            uploadedRace = "Zerg";
+        }
+        ParseObject testObject = new ParseObject(object);
+        testObject.put("Name", "$" + selectedBuild);
+        testObject.put("Race", uploadedRace);
+        testObject.addAllUnique("Entity", build);
         Log.e("PARSE.COM", "DOWNLOAD STARTED");
         testObject.saveInBackground(new SaveCallback() {
             @Override
@@ -140,156 +166,70 @@ public class UploadBuilds extends Base_Activity {
 
 
     public void constructBuild(String in) {
-        int picker, placeholder;
-        myTemp = 0;
-        boolean readingBuild = false;
-        Scanner construct = new Scanner(datax);
-        picker = 0;
-        placeholder = 0;
-        String unparsedBuild = "";
-        while (construct.hasNextLine()) {
 
-            if (!readingBuild) {
-
-                if (construct.nextLine().equals(in)) {
-                    readingBuild = true;
-                }
-
-            }
-            if (readingBuild) {
-                String z = construct.nextLine();
-                if (z != "end") {
-                    if (picker == 0) {
-                        unparsedBuild += z + "{";
-                        placeholder++;
-                        picker++;
-                    } else if (picker == 1) {
-                        unparsedBuild += z + ":";
-                        picker++;
-                    } else if (picker == 2) {
-                        unparsedBuild += z + "}\n";
-                        picker = 0;
-                        myTemp++;
-                    }
-                }
-
-                if (z.equals("end")) {
-                    readingBuild = false;
-                }
-            }
-            constructedBuild = new String[myTemp];
-            Scanner scan = new Scanner(unparsedBuild);
-            int temp = 0;
-
-            for(int x = 0; x < myTemp; x++) {
-                constructedBuild[temp] = scan.nextLine();
-                temp++;
-            }
-
-        }
     }
 
-    public void selectBuild(View v) {
+    public void selectBuild(View v) throws IOException {
+
         datax = "";
         int intx, tmp;
-        try {
-            if(s.getSelectedItemId() == 0) {
-                fIn = openFileInput("terranBuilds.dat");
-                race = "Terran";
-            }
-            else if (s.getSelectedItemId() == 1) {
-                fIn = openFileInput("protossBuilds.dat");
-                race = "Protoss";
-            }
-            else{
-                fIn = openFileInput("zergBuilds.dat");
-                race = "Zerg";
-            }
-            if (fIn != null) {
-                InputStreamReader isr = new InputStreamReader(fIn);
-                BufferedReader buffreader = new BufferedReader(isr);
-
-                String readString = buffreader.readLine();
-                while (readString != null) {
-                    datax = datax + readString + "\n";
-                    readString = buffreader.readLine();
-                }
-                isr.close();
-                //here
+            if (s.getSelectedItemId() == 0) {
+                fIn = openFileInput("terran.dat");
+                race = 1;
+            } else if (s.getSelectedItemId() == 1) {
+                fIn = openFileInput("protoss.dat");
+                race = 2;
+            } else {
+                fIn = openFileInput("zerg.dat");
+                race = 3;
             }
 
-        }catch(IOException ioe){
-            ioe.printStackTrace();
-        }
-
-        // Toast.makeText(getBaseContext(), datax, Toast.LENGTH_LONG).show();
-        if (fIn != null) {
-            intx = 0;
-            tmp = 1;
-            Scanner scan = new Scanner(datax);
-            while (scan.hasNextLine()) {
-                if (scan.nextLine().equals("end")) {
-                    intx++;
-
-                }
-            }
-
-            buildName = new String[intx];
-
-            Scanner scan2 = new Scanner(datax);
-            int i = 0;
-
-            buildName[0] = scan2.nextLine();
-
-            while (scan2.hasNextLine()) {
-                if (scan2.nextLine().equals("end")) {
-                    String z = Integer.toString(i);
-                    String x = Integer.toString(intx);
-
-                    if (i != intx - 1) {
-                        buildName[tmp] = scan2.nextLine();
-                        tmp++;
-                        i++;
+            buildNames = new ArrayList<String>();
+            allBuilds = "";
+            FileInputStream fileInput = null;
+            if (race != 0) {
+                    if (race == 1) {
+                        fileInput = openFileInput("terran.dat");
+                    } else if (race == 2) {
+                        fileInput = openFileInput("protoss.dat");
+                    } else if (race == 3) {
+                        fileInput = openFileInput("zerg.dat");
                     }
 
-                }
-            }
+                    if (fileInput != null) {
+                        InputStreamReader inputReader = new InputStreamReader(fileInput);
+                        BufferedReader buffReader = new BufferedReader(inputReader);
+                        String readString = buffReader.readLine();
+                        while (readString != null) {
+                            if (readString.contains("$")) {
+                                buildNames.add(readString.substring(1));
+                            }
+                            allBuilds = allBuilds + readString + "\n";
+                            readString = buffReader.readLine();
+                        }
+                        inputReader.close();
 
-            AlertDialog.Builder b = new AlertDialog.Builder(this);
-            b.setTitle("Select Build");
-            b.setItems(buildName, new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.dismiss();
-                    switch (which) {
-
-                        case 0:
-                            selectedBuild = buildName[0];
-                            buildTextView.setText("Build: " + selectedBuild);
-                            constructBuild(selectedBuild);
-                            break;
-
-
-
-
-
-                        default:
-                            selectedBuild = buildName[which];
-                            buildTextView.setText("Build: " + selectedBuild);
-                            constructBuild(selectedBuild);
-                            break;
-
+                        if (buildNames.size() > 0) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                            builder.setTitle("Select Build");
+                            builder.setItems(buildNames.toArray(new String[buildNames.size()]), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    initializeBuild(which);
+                                }
+                            });
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        } else {
+                            Toast.makeText(getBaseContext(), "No Builds Found", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
+                else{
+                    Toast.makeText(getBaseContext(), "No builds found!", Toast.LENGTH_LONG).show();
+                }
 
-            });
-
-            b.show();
-        }
-        else{
-            Toast.makeText(getBaseContext(), "No builds found!", Toast.LENGTH_LONG).show();
-        }
-
-    }
+            }
 
     private boolean isNetworkConnected() {
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -312,6 +252,36 @@ public class UploadBuilds extends Base_Activity {
         }
     }
 
+    public void initializeBuild(int i){
+        selectedBuild = buildNames.get(i);
+        build = new ArrayList<String>();
+        Scanner scan = new Scanner(allBuilds);
+
+        boolean readingBuild = true, read = true;
+        int n = 0;
+        while(readingBuild) {
+            while (scan.hasNext()) {
+                if (scan.nextLine().contains("$")) {
+                    if (n == i) {
+                        while (scan.hasNext() && read) {
+                            String temp = scan.nextLine();
+                            if (temp.contains("$")) {
+                                read = false;
+                            } else {
+                                build.add(temp);
+                            }
+                        }
+                    } else {
+                        n++;
+                    }
+                }
+            }
+            readingBuild = false;
+        }
+        nameView.setText(selectedBuild);
+
+    }
+
     private static Account getAccount(AccountManager accountManager) {
         Account[] accounts = accountManager.getAccountsByType("com.google");
         Account account;
@@ -321,6 +291,6 @@ public class UploadBuilds extends Base_Activity {
             account = null;
         }
         return account;
-    }*/
     }
 }
+
