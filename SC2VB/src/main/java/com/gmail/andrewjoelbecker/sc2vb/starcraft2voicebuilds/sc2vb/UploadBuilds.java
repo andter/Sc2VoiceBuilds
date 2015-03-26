@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.*;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.parse.*;
 
 import java.io.*;
@@ -43,6 +45,14 @@ public class UploadBuilds extends Base_Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_builds);
+
+        AdView adView = (AdView)findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("839B631B02A7FF2AC27C272F634E7E3E")
+                .build();
+
+        adView.loadAd(adRequest);
 
         numberOfRequests = 4;
         requestsLeft = 5;

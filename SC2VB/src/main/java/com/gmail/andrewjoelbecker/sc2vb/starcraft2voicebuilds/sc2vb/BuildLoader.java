@@ -14,6 +14,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -35,6 +37,14 @@ public class BuildLoader extends Base_Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_build_loader);
+
+        AdView adView = (AdView)findViewById(R.id.adView);
+
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice("839B631B02A7FF2AC27C272F634E7E3E")
+                .build();
+
+        adView.loadAd(adRequest);
 
         Intent i = getIntent();
         race = i.getIntExtra("race", 0);
