@@ -1,6 +1,5 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
-import android.app.Notification;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -8,7 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 /**
- * Created by drew on 3/21/15.
+ * Class: Base_Activity.java
+ * Function: This class extends the ActionBarActivity and its primary focus is as a menu class which all other classes
+ * extend from.  The Base_Activity simply displays a menu which users can click items to view other activities/classes
 */
 public class Base_Activity extends ActionBarActivity {
 
@@ -26,11 +27,14 @@ public class Base_Activity extends ActionBarActivity {
         switch (item.getItemId())
         {
             case R.id.home:
-                Log.i("MENU", "Home Clicked");
                 i = new Intent(this, MainActivity.class);
                 this.startActivity(i);
                 return true;
 
+            case R.id.about:
+                i = new Intent(this, AboutActivity.class);
+                this.startActivity(i);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

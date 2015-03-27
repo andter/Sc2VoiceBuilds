@@ -8,6 +8,9 @@ import android.view.View;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
+/* Class: MainActivity.java
+*  Function: This class is the home screen for the application and is the gateway to all other activities
+*/
 
 public class MainActivity extends Base_Activity {
 

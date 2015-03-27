@@ -1,12 +1,12 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
-import com.parse.Parse;
-
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
- * Created by drew on 3/19/15.
+ * Class: MyBuild.java
+ * Function: This class functions as the backbone for the app and handles all of the build functionality
+ *           It allows users to add Nodes to it, it displays said nodes and it stores the display for Items as well
  */
 public class MyBuild {
     private ArrayList<Node> build = new ArrayList<Node>();

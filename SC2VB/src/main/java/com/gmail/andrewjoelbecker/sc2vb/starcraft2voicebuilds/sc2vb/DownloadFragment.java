@@ -1,11 +1,7 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
-import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.FragmentTransaction;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +15,10 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Created by drew on 3/23/15.
+ * Class: DownloadFragment.java
+ * Function: The DownloadFragment is a class that allows users to view and save builds VIA the parse API
+ * and connected parse database.  This class is called inside the BuildLoader class
+ *
  */
 public class DownloadFragment extends Fragment {
     ArrayList<String> buildNames = new ArrayList<String>();
@@ -34,7 +33,6 @@ public class DownloadFragment extends Fragment {
     MyBuild build;
     int currentPosition;
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_download, container, false);

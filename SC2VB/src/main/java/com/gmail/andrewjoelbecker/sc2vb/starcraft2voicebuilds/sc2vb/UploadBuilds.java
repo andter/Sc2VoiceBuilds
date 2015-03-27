@@ -14,23 +14,21 @@ import android.widget.*;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.parse.*;
-
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * Created by drew on 3/11/15.
+ * Class: UploadBuilds.java
+ * Function: This class allows users to upload builds to the database via the parse API and connected database
  */
 public class UploadBuilds extends Base_Activity {
     TextView output, buildTextView;
     Spinner s;
-    String[] races, constructedBuild;
-    int myTemp, numberOfRequests, requestsLeft, race;
+    String[] races;
+    int numberOfRequests, requestsLeft, race;
     String selectedBuild, datax, email;
     FileInputStream fIn;
-    String[] buildName;
     static Boolean uploaded;
     ArrayList<String> buildNames = new ArrayList<String>();
     ArrayList<String> build = new ArrayList<String>();
@@ -75,17 +73,14 @@ public class UploadBuilds extends Base_Activity {
         }
         else{
             //Enable all views
+            LinearLayout linearDisplay = (LinearLayout)findViewById(R.id.linearDisplay);
             tv = (TextView) findViewById(R.id.textv);
             nameView = (TextView) findViewById(R.id.myBuild);
             spin = (Spinner) findViewById(R.id.spinner1);
             btn = (Button) findViewById(R.id.button1);
             btn2 = (Button) findViewById(R.id.button);
 
-            tv.setVisibility(View.VISIBLE);
-            nameView.setVisibility(View.VISIBLE);
-            spin.setVisibility(View.VISIBLE);
-            btn.setVisibility(View.VISIBLE);
-            btn2.setVisibility(View.VISIBLE);
+            linearDisplay.setVisibility(View.VISIBLE);
 
                 Parse.initialize(this, "v9D4hN8qNtXWTE4z4aNOHZsXkhBlVW29Iucw1Ll9", "bw5EcOR0neExSVWiMzrd8xdj1sqeSAmTSWlnZTdC");
 
@@ -172,11 +167,6 @@ public class UploadBuilds extends Base_Activity {
         });
         Log.i("Uploaded", uploaded.toString());
         return uploaded;
-    }
-
-
-    public void constructBuild(String in) {
-
     }
 
     public void selectBuild(View v) throws IOException {

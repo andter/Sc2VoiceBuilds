@@ -13,31 +13,32 @@
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/mainll" android:gravity="center_horizontal"
                   android:layout_alignParentTop="true" android:layout_alignRight="@+id/button1"
                   android:layout_alignEnd="@+id/button1" android:layout_marginRight="32dp"
-                  android:layout_marginEnd="32dp">
-    <ImageButton
-        android:id="@+id/imageButton1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:src="@drawable/zergbtn"
-        android:onClick="zergClick"/>
+                  android:layout_marginEnd="32dp"
+            android:layout_weight="1">
+        <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/zergbtn"
+                android:onClick="zergClick"
+                android:adjustViewBounds="true"/>
 
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:src="@drawable/terranbtn"
-        android:onClick="terranClick"/>
+        <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/terranbtn"
+                android:onClick="terranClick"/>
 
         <ImageButton
                 android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="@android:color/transparent"
                 android:src="@drawable/protossbtn"
-                android:onClick="protossClick" android:layout_alignTop="@+id/mainll" android:layout_toRightOf="@+id/mainll"
-                android:layout_toEndOf="@+id/mainll"/>
+                android:onClick="protossClick"/>
 
     </LinearLayout>
 

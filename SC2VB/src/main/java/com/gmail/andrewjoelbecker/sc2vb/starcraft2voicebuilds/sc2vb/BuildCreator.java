@@ -17,7 +17,9 @@ import java.io.FileOutputStream;
 import java.text.DecimalFormat;
 
 /**
- * Created by drew on 3/19/15.
+ * Class: BuildCreator.java
+ * Function: This class allows users to create builds via a timer and threads.  It uses the MyBuild class in order
+ * to add Nodes to a build which are then used in other classes to listen to and view a build
  */
 public class BuildCreator extends Base_Activity {
     MyBuild build;
@@ -121,7 +123,6 @@ public class BuildCreator extends Base_Activity {
                     string = "$";
                     string += inputString + "\n";
                     string += build.toString();
-                    Toast.makeText(getBaseContext(), string, Toast.LENGTH_LONG).show();
 
                     try {
                         outputStream = openFileOutput(filename, MODE_APPEND);

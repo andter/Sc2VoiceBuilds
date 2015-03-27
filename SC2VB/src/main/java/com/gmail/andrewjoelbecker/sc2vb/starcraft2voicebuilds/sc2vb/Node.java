@@ -1,7 +1,8 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
 /**
- * Created by drew on 3/19/15.
+ * Class: Node.java
+ * A Node is a singular item inside a build, it contains an item and some time in which it is located inside the Build
  */
 public class Node {
     String item;

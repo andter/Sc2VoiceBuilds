@@ -1,17 +1,18 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
-/**
- * Created by drew on 3/19/15.
- */
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import java.util.ArrayList;
+
+/**
+ * Class: CustomAdapter.java
+ * Function: This class is a custom Adapter that extends the base ArrayAdapter, it supports two textviews
+ * and is linked to the displayItem class, it allows build items to be displayed in a neat format
+ */
 
 public class CustomAdapter extends ArrayAdapter<DisplayItem> {
     private ArrayList<DisplayItem> objects;

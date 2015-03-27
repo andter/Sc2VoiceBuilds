@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,9 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
- * Created by drew on 3/22/15.
+ * Class: BuildFragment.java
+ * Function: This class allows users to view builds that are passed in via the BuildLoader class, the primary purpose
+ * of this class is to facilitate the display and execution of build items when listening to a build
  */
 public class BuildFragment extends Fragment{
     MyBuild build;
@@ -34,7 +35,7 @@ public class BuildFragment extends Fragment{
     View newView, oldView;
     Node temp;
     ImageView background;
-    @Nullable
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_build, container, false);

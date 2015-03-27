@@ -8,9 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +23,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by drew on 3/19/15.
+ * Class: BuildLoader.java
+ * Function: This class is the central place for users to view and listen to builds, it implements both
+ * the BuildFragment class as well as the DownloadFragment class.
  */
 public class BuildLoader extends Base_Activity {
     ArrayList<String> buildNames;
