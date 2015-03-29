@@ -72,21 +72,21 @@ public class MainActivity extends Base_Activity {
 
             public void onClick(DialogInterface dialog, int which){
                 //	Toast.makeText(getApplicationContext(), races[which], Toast.LENGTH_SHORT).show();
-                if(races[which] == "Terran")
+                if(races[which].equals("Terran"))
                 {
                     Intent intent = new Intent(d.getContext(), BuildCreator.class);
                     intent.putExtra("race", 1);
                     d.getContext().startActivity(intent);
                 }
 
-                if(races[which] == "Zerg")
+                if(races[which].equals("Zerg"))
                 {
                     Intent intent = new Intent(d.getContext(), BuildCreator.class);
                     intent.putExtra("race", 3);
                     d.getContext().startActivity(intent);
                 }
 
-                if(races[which] == "Protoss")
+                if(races[which].equals("Protoss"))
                 {
                     Intent intent = new Intent(d.getContext(), BuildCreator.class);
                     intent.putExtra("race", 2);
