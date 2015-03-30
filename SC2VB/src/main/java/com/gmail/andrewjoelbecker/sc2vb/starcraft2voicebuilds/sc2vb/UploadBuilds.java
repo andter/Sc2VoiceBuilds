@@ -152,6 +152,7 @@ public class UploadBuilds extends Base_Activity {
         ParseObject testObject = new ParseObject(object);
         testObject.put("Name", "$" + selectedBuild);
         testObject.put("Race", uploadedRace);
+        testObject.put("Likes", 0);
         testObject.addAllUnique("Entity", build);
         Log.e("PARSE.COM", "DOWNLOAD STARTED");
         testObject.saveInBackground(new SaveCallback() {

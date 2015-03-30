@@ -1,6 +1,7 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
 import android.app.Fragment;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,7 +28,7 @@ public class DownloadFragment extends Fragment {
     ArrayAdapter myarrayAdapter;
     ListView lv;
     LinearLayout ll;
-    Button back, save;
+    ImageButton back, save;
     int race;
     View v;
     MyBuild build;
@@ -40,14 +41,14 @@ public class DownloadFragment extends Fragment {
         Bundle bundle = this.getArguments();
         race = bundle.getInt("race");
 
-        back = (Button)v.findViewById(R.id.back);
+        back = (ImageButton)v.findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 displayView();
             }
         });
-        save = (Button)v.findViewById(R.id.save);
+        save = (ImageButton)v.findViewById(R.id.save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

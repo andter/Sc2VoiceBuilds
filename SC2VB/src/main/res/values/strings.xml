@@ -24,7 +24,7 @@
     <string name="select">Select Race</string>
     <string name="selectBuild">Select Build</string>
     <string name="aboutString">Hello, Welcome to the SC2VoiceBuilds Application! This application was created with intentions of providing players a better way to learn and grow in starcraft2!  This application gives the user the ability to create, and view Starcraft voice builds.  A voice build put simply, is just a recording that allows the user to follow along while in a game of starcraft.  There are many good applications to being able to do this, such as practicing new builds, creating builds for friends, or even using the builds the professionals use in their games.  Players can also share builds with friends via Uploads and download builds that other players have created.  Happy Star crafting!</string>
-
+    <string name="search">Search</string>
     <string-array name="structures"></string-array>
     <string-array name="races"></string-array>
     <string name="racesPrompt">Select Race</string>

@@ -15,23 +15,52 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listView"
-            android:layout_below="@+id/ll" android:layout_alignParentLeft="true"
+            android:layout_below="@+id/ph" android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
 
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/ll" android:visibility="invisible">
-    <Button
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/ph"
+                  android:gravity="center"
+            android:orientation="vertical">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/ll" android:visibility="visible" android:gravity="center">
+    <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/back"
             android:id="@+id/back"
-            android:background="@drawable/custom_button"/>
+            android:src="@drawable/backbtn"
+            android:background="@android:color/transparent"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton" android:src="@drawable/likebtn"
+            android:background="@android:color/transparent"/>
+    <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save"
+            android:id="@+id/save"
+            android:background="@drawable/savebtn"
+            />
+</LinearLayout>
 
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/sl" android:gravity="center">
+
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/input"
+                />
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/save"
-                android:id="@+id/save"
-                android:background="@drawable/custom_button"/>
+                android:text="@string/search"
+                android:id="@+id/search"
+                android:background="@drawable/custom_button"
+
+                />
     </LinearLayout>
+
+    </LinearLayout>
+
 
 </RelativeLayout>
