@@ -172,8 +172,6 @@ public class DownloadFragment extends Fragment {
             buildNames.add(name);
             entities.add(p.get("Entity"));
 
-
-
         }
 
         updateView();
