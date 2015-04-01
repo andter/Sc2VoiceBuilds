@@ -23,7 +23,7 @@ import java.text.DecimalFormat;
  */
 public class BuildCreator extends Base_Activity {
     MyBuild build;
-    int race, seconds, minutes, lastSecond, lastMinute;
+    int race, seconds, minutes, lastSecond, lastMinute, setupInitial = 0;
     Spinner structuresSpinner, unitsSpinner;
     String[] structuresArray, unitsArray;
     String string;
@@ -237,6 +237,35 @@ public class BuildCreator extends Base_Activity {
 
     }
 
+    public void displayOptions(int pos){
+        stop();
+        Log.i("TAG", "DISPLAY");
+        AlertDialog.Builder editAlert = new AlertDialog.Builder(this);
+
+        editAlert.setTitle("Delete Node");
+        final EditText input = new EditText(this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.FILL_PARENT,
+                LinearLayout.LayoutParams.FILL_PARENT);
+        input.setLayoutParams(lp);
+        editAlert.setView(input);
+        editAlert.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                build.removeNode(which);
+                updateUI();
+                lastSecond--;
+                start();
+            }
+        });
+        editAlert.setNegativeButton("Close", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                start();
+            }
+        });
+        editAlert.show();
+    }
     //Set up UI components for terran race
     public void setupTerranUI(){
         //Setup Structure Spinner
@@ -306,7 +335,19 @@ public class BuildCreator extends Base_Activity {
         }
     }
 
+    public void start(){
+        if(!Running){
+            new Thread(runnable).start();
+            Running = true;
+        }
+    }
+
     public void stop(View v){
+        Running = false;
+        seconds--;
+    }
+
+    public void stop(){
         Running = false;
         seconds--;
     }
@@ -350,24 +391,61 @@ public class BuildCreator extends Base_Activity {
         };
     }
 
-    public void addStructure(View v){
-        int position = structuresSpinner.getSelectedItemPosition();
-        if(position > 0 && (seconds > 0 || minutes > 0) && (lastSecond != seconds || lastMinute != minutes)){
-            build.addNode(structuresArray[position], minutes, seconds);
-            updateUI();
-            lastSecond = seconds;
-            lastMinute = minutes;
-
+    public void addStructure(View v) {
+        if (setupInitial == 0) {
+            Log.i("TAG", "LOL");
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    displayOptions(position);
+                }
+            });
         }
-    }
+            int position = structuresSpinner.getSelectedItemPosition();
+            if (position > 0 && (seconds > 0 || minutes > 0) && (lastSecond != seconds || lastMinute != minutes)) {
+                build.addNode(structuresArray[position], minutes, seconds);
+                updateUI();
+                lastSecond = seconds;
+                lastMinute = minutes;
+                lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        displayOptions(position);
+                    }
+                });
 
+            }
+        }
     public void addUnit(View v){
+        if (setupInitial == 0) {
+            Log.i("TAG", "LOL");
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    displayOptions(position);
+                }
+            });
+        }        if (setupInitial == 0) {
+            Log.i("TAG", "LOL");
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    displayOptions(position);
+                }
+            });
+        }
         int position = unitsSpinner.getSelectedItemPosition();
         if(position > 0 && (seconds > 0 || minutes > 0) && (lastSecond != seconds || lastMinute != minutes)) {
             build.addNode(unitsArray[position], minutes, seconds);
             updateUI();
             lastSecond = seconds;
             lastMinute = minutes;
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    displayOptions(position);
+                }
+            });
         }
     }
 
