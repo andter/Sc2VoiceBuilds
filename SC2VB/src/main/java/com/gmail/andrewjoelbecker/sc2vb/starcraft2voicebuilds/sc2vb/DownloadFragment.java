@@ -1,12 +1,14 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 import com.parse.*;
 
@@ -28,7 +30,9 @@ public class DownloadFragment extends Fragment {
     ArrayAdapter myarrayAdapter;
     ListView lv;
     LinearLayout ll;
+    EditText searchInput;
     ImageButton back, save;
+    Button searchBtn;
     int race;
     View v;
     MyBuild build;
@@ -55,8 +59,16 @@ public class DownloadFragment extends Fragment {
                 saveBuild();
             }
         });
+        searchInput = (EditText)v.findViewById(R.id.input);
+        searchBtn = (Button)v.findViewById(R.id.search);
+        searchBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+        public void onClick(View v){
+                InputMethodManager imm = (InputMethodManager)getActivity().getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
+            }
+        });
         ll = (LinearLayout)v.findViewById(R.id.ll);
-
         displayView();
         String parseClass = "";
 

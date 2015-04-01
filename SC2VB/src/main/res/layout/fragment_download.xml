@@ -22,7 +22,8 @@
                   android:gravity="center"
             android:orientation="vertical">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:id="@+id/ll" android:visibility="visible" android:gravity="center">
-    <ImageButton
+
+        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/back"
