@@ -24,8 +24,8 @@ import java.util.List;
  *
  */
 public class DownloadFragment extends Fragment {
-    ArrayList<String> buildNames = new ArrayList<String>();
     ArrayList<Object> entities= new ArrayList<Object>();
+    ArrayList<TitleItem> titles = new ArrayList<TitleItem>();
     ArrayList<String> buildString;
     ArrayAdapter myarrayAdapter;
     ListView lv;
@@ -33,7 +33,7 @@ public class DownloadFragment extends Fragment {
     EditText searchInput;
     ImageButton back, save;
     Button searchBtn;
-    int race;
+    int race, index = 0;
     View v;
     MyBuild build;
     int currentPosition;
@@ -66,6 +66,19 @@ public class DownloadFragment extends Fragment {
         public void onClick(View v){
                 InputMethodManager imm = (InputMethodManager)getActivity().getBaseContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
+
+                String temp = searchInput.getText().toString();
+                    ArrayList<TitleItem> newTitles = new ArrayList<TitleItem>();
+                    for (TitleItem t : titles) {
+                        if (t.getItem().contains(temp)) {
+                            newTitles.add(t);
+                        }
+                    }
+                    myarrayAdapter = new TitleAdapter(getActivity().getBaseContext(), R.layout.items, newTitles);
+
+                    lv = (ListView) v.findViewById(R.id.listView);
+                    lv.setAdapter(myarrayAdapter);
+
             }
         });
         ll = (LinearLayout)v.findViewById(R.id.ll);
@@ -115,7 +128,7 @@ public class DownloadFragment extends Fragment {
             filename = "zerg.dat";
         }
         string = "$";
-        string += buildNames.get(currentPosition) + "\n";
+        string += titles.get(currentPosition) + "\n";
         string += build.toString();
         Toast.makeText(getActivity().getBaseContext(), string, Toast.LENGTH_LONG).show();
 
@@ -132,7 +145,7 @@ public class DownloadFragment extends Fragment {
     }
     public void displayView(){
         ll.setVisibility(View.INVISIBLE);
-        myarrayAdapter = new ArrayAdapter(getActivity().getBaseContext(), R.layout.items, buildNames);
+        myarrayAdapter = new TitleAdapter(getActivity().getBaseContext(), R.layout.items, titles);
 
         lv = (ListView)v.findViewById(R.id.listView);
         lv.setAdapter(myarrayAdapter);
@@ -140,7 +153,7 @@ public class DownloadFragment extends Fragment {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                currentPosition = position;
+                currentPosition = titles.get(position).getPosition();
                 displayBuild(currentPosition);
             }
         });
@@ -181,8 +194,9 @@ public class DownloadFragment extends Fragment {
         for(ParseObject p : ob){
             String name = p.getString("Name");
             name = name.replace("$", "");
-            buildNames.add(name);
+            titles.add(new TitleItem(index, name + " "));
             entities.add(p.get("Entity"));
+            index++;
 
         }
 
