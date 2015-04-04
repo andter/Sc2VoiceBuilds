@@ -79,7 +79,7 @@ public class DownloadFragment extends Fragment {
                 else {
                     displayTitles.clear();
                     for (TitleItem t : originalTitles) {
-                        if (t.getItem().contains(temp)) {
+                        if (t.getItem().toLowerCase().contains(temp.toLowerCase())) {
                             displayTitles.add(t);
                         }
                     }
