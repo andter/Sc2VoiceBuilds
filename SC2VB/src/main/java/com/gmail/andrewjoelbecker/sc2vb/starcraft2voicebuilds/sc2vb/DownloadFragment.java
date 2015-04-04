@@ -2,7 +2,6 @@ package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
 import android.app.Fragment;
 import android.content.Context;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,7 +24,8 @@ import java.util.List;
  */
 public class DownloadFragment extends Fragment {
     ArrayList<Object> entities= new ArrayList<Object>();
-    ArrayList<TitleItem> titles = new ArrayList<TitleItem>();
+    ArrayList<TitleItem> originalTitles = new ArrayList<TitleItem>();
+    ArrayList<TitleItem> displayTitles = new ArrayList<TitleItem>();
     ArrayList<String> buildString;
     ArrayAdapter myarrayAdapter;
     ListView lv;
@@ -61,6 +61,7 @@ public class DownloadFragment extends Fragment {
         });
         searchInput = (EditText)v.findViewById(R.id.input);
         searchBtn = (Button)v.findViewById(R.id.search);
+
         searchBtn.setOnClickListener(new View.OnClickListener(){
             @Override
         public void onClick(View v){
@@ -68,19 +69,35 @@ public class DownloadFragment extends Fragment {
                 imm.hideSoftInputFromWindow(searchInput.getWindowToken(), 0);
 
                 String temp = searchInput.getText().toString();
-                    ArrayList<TitleItem> newTitles = new ArrayList<TitleItem>();
-                    for (TitleItem t : titles) {
+                if(temp.equals("") || temp.equals(" ") || temp.equals("  ")){
+                    displayTitles.clear();
+                    for(TitleItem t : originalTitles){
+                        displayTitles.add(t);
+                    }
+                    updateView();
+                }
+                else {
+                    displayTitles.clear();
+                    for (TitleItem t : originalTitles) {
                         if (t.getItem().contains(temp)) {
-                            newTitles.add(t);
+                            displayTitles.add(t);
                         }
                     }
-                    myarrayAdapter = new TitleAdapter(getActivity().getBaseContext(), R.layout.items, newTitles);
-
-                    lv = (ListView) v.findViewById(R.id.listView);
+                    myarrayAdapter = new TitleAdapter(getActivity().getBaseContext(), R.layout.items, displayTitles);
                     lv.setAdapter(myarrayAdapter);
+                    lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            currentPosition = displayTitles.get(position).getPosition();
+                            displayBuild(currentPosition);
+                        }
+                    });
+                    updateView();
+                }
 
             }
         });
+
         ll = (LinearLayout)v.findViewById(R.id.ll);
         displayView();
         String parseClass = "";
@@ -128,7 +145,8 @@ public class DownloadFragment extends Fragment {
             filename = "zerg.dat";
         }
         string = "$";
-        string += titles.get(currentPosition) + "\n";
+            string += originalTitles.get(currentPosition).getItem() + "\n";
+
         string += build.toString();
         Toast.makeText(getActivity().getBaseContext(), string, Toast.LENGTH_LONG).show();
 
@@ -145,15 +163,16 @@ public class DownloadFragment extends Fragment {
     }
     public void displayView(){
         ll.setVisibility(View.INVISIBLE);
-        myarrayAdapter = new TitleAdapter(getActivity().getBaseContext(), R.layout.items, titles);
+        myarrayAdapter = new TitleAdapter(getActivity().getBaseContext(), R.layout.items, displayTitles);
 
         lv = (ListView)v.findViewById(R.id.listView);
         lv.setAdapter(myarrayAdapter);
 
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                currentPosition = titles.get(position).getPosition();
+                currentPosition = originalTitles.get(position).getPosition();
                 displayBuild(currentPosition);
             }
         });
@@ -194,10 +213,10 @@ public class DownloadFragment extends Fragment {
         for(ParseObject p : ob){
             String name = p.getString("Name");
             name = name.replace("$", "");
-            titles.add(new TitleItem(index, name + " "));
+            originalTitles.add(new TitleItem(index, name + " "));
             entities.add(p.get("Entity"));
             index++;
-
+            displayTitles.add(new TitleItem(index, name + " "));
         }
 
         updateView();
