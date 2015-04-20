@@ -28,10 +28,9 @@ import java.util.Scanner;
  * the BuildFragment class as well as the DownloadFragment class.
  */
 public class BuildLoader extends Base_Activity {
-    ArrayList<String> buildNames;
-    ArrayList<String> build;
+    ArrayList<String> buildNames, build, namesDisplay;
     int race;
-    String allBuilds;
+    String allBuilds, description, creator;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -123,6 +122,7 @@ public class BuildLoader extends Base_Activity {
 
     public void loadBuild(View v) {
         buildNames = new ArrayList<String>();
+        namesDisplay = new ArrayList<String>();
         allBuilds = "";
         FileInputStream fileInput = null;
         if (race != 0) {
@@ -142,6 +142,7 @@ public class BuildLoader extends Base_Activity {
                 while(readString != null){
                     if(readString.contains("$")){
                         buildNames.add(readString.substring(1));
+                        namesDisplay.add(readString.substring(1, readString.indexOf("*")));
                     }
                     allBuilds = allBuilds + readString + "\n";
                     readString = buffReader.readLine();
@@ -151,7 +152,7 @@ public class BuildLoader extends Base_Activity {
                 if(buildNames.size() > 0){
                     AlertDialog.Builder builder = new AlertDialog.Builder(this);
                     builder.setTitle("Select Build");
-                    builder.setItems(buildNames.toArray(new String[buildNames.size()]), new DialogInterface.OnClickListener() {
+                    builder.setItems(namesDisplay.toArray(new String[namesDisplay.size()]), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             initializeBuild(which);

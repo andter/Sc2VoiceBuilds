@@ -29,7 +29,9 @@
     <string-array name="races"></string-array>
     <string name="racesPrompt">Select Race</string>
     <string name="selectRace">Select Race to View Builds</string>
-
+    <string name="buildName">Build Name: </string>
+    <string name="buildDescription">Description: </string>
+    <string name="buildCreator">Creator: </string>
     <string name="prompt">Selections</string>
 
     <string-array name="units"></string-array>

@@ -1,11 +1,13 @@
 package com.gmail.andrewjoelbecker.sc2vb.starcraft2voicebuilds.sc2vb;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -57,7 +59,7 @@ public class BuildCreator extends Base_Activity {
             terranSetup();
         }
         else if(race == 2){
-            protossSetup();
+           protossSetup();
         }
         else if (race == 3){
             zergSetup();
@@ -96,6 +98,60 @@ public class BuildCreator extends Base_Activity {
     }
 
     public void saveBuild(){
+        final Dialog dialog = new Dialog(BuildCreator.this);
+        dialog.setContentView(R.layout.save_dialog);
+        dialog.setTitle("Save Build");
+        final  EditText nameET = (EditText)dialog.findViewById(R.id.name);
+        final EditText descET = (EditText)dialog.findViewById(R.id.desc);
+        final EditText createET = (EditText)dialog.findViewById(R.id.creator);
+        Button submit = (Button) dialog.findViewById(R.id.button1);
+        Button cancel = (Button) dialog.findViewById(R.id.button2);
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String inputString = nameET.getText().toString();
+                if (!(inputString.contains("$") || inputString.equals("") || inputString.contains("*"))) {
+                    String filename = "";
+                    if (race == 1) {
+                        filename = "terran.dat";
+                    } else if (race == 2) {
+                        filename = "protoss.dat";
+                    } else if (race == 3) {
+                        filename = "zerg.dat";
+                    }
+                    FileOutputStream outputStream;
+                    string = "$";
+                    string += inputString;
+                    string += "*" + descET.getText() + "*" + createET.getText() + "\n";
+                    string += build.toString();
+
+                    try {
+                        outputStream = openFileOutput(filename, MODE_APPEND);
+                        outputStream.write(string.getBytes());
+                        outputStream.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    Toast.makeText(getBaseContext(), "Saved", Toast.LENGTH_LONG).show();
+
+                    string = "";
+                    dialog.dismiss();
+                }
+                else{
+                    Toast.makeText(getBaseContext(), "Invalid Name", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+        /*
         AlertDialog.Builder editAlert = new AlertDialog.Builder(this);
 
         editAlert.setTitle("Save");
@@ -105,7 +161,7 @@ public class BuildCreator extends Base_Activity {
                 LinearLayout.LayoutParams.FILL_PARENT,
                 LinearLayout.LayoutParams.FILL_PARENT);
         input.setLayoutParams(lp);
-        editAlert.setView(input);
+        editAlert.setView(findViewById(R.layout.save_dialog));
         editAlert.setPositiveButton("Submit", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -147,7 +203,7 @@ public class BuildCreator extends Base_Activity {
 
             }
         });
-        editAlert.show();
+        editAlert.show();*/
     }
     //Perform basic zerg Setup
     public void zergSetup(){
@@ -165,6 +221,7 @@ public class BuildCreator extends Base_Activity {
 
     //Perform basic terran Setup
     public void terranSetup(){
+        Toast.makeText(getBaseContext(), "ALERT", Toast.LENGTH_SHORT).show();
         build = new MyBuild(race);
         setupThread();
         setupTerranUI();
@@ -266,6 +323,7 @@ public class BuildCreator extends Base_Activity {
         });
         editAlert.show();
     }
+
     //Set up UI components for terran race
     public void setupTerranUI(){
         //Setup Structure Spinner

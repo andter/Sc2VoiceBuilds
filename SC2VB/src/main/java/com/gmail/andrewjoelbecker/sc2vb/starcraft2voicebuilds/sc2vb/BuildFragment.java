@@ -24,18 +24,17 @@ public class BuildFragment extends Fragment{
     ArrayAdapter myarrayAdapter;
     int race, countdown = 3;
     ListView lv;
-    String name;
+    String name, description, creator;
     Button stopButton, startButton;
     Handler handler;
     Runnable runnable;
     Boolean running = false, retrieved = false;
     int minutes, seconds, currentNode, colorPointer;
     DecimalFormat f;
-    TextView minutesTV, secondsTV;
+    TextView minutesTV, secondsTV, buildName, buildDescription, buildCreator;
     View newView, oldView;
     Node temp;
     ImageView background;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_build, container, false);
@@ -44,7 +43,17 @@ public class BuildFragment extends Fragment{
         strings = bundle.getStringArrayList("build");
         race = bundle.getInt("race");
         name = bundle.getString("buildName");
-
+        int t = name.indexOf("*");
+        description = name.substring(t + 1, name.indexOf("*", t+1));
+        creator = name.substring(name.indexOf("*", t+1) + 1, name.length());
+        Toast.makeText(getActivity().getBaseContext(), "Name:" + name + "\nDescription" + description + "\nCreator" + creator, Toast.LENGTH_SHORT).show();
+        buildName = (TextView)v.findViewById(R.id.buildName);
+        buildDescription = (TextView) v.findViewById(R.id.buildDescription);
+        buildCreator = (TextView) v.findViewById(R.id.buildCreator);
+        name = name.substring(0, name.indexOf("*"));
+        buildName.append(name);
+        buildDescription.append(description);
+        buildCreator.append(creator);
         colorPointer = Color.parseColor("#8030ACD6");
         createBuild();
         initializeThread();

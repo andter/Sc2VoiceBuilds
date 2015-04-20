@@ -15,11 +15,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Build Name:"
-            android:id="@+id/textView"
+            android:text="@string/buildName"
+            android:id="@+id/buildName"
             android:layout_gravity="center"
             android:textColor="@color/black" android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/backgroundView" android:layout_alignParentLeft="true"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buildDescription"
+            android:id="@+id/buildDescription"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_below="@+id/buildName"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buildCreator"
+            android:id="@+id/buildCreator"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_below="@+id/buildDescription"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
 
     <TextView
             android:layout_width="wrap_content"
@@ -28,7 +48,7 @@
             android:text="@string/zeroes"
 
             android:id="@+id/minutesLabel"
-            android:layout_below="@+id/textView" android:layout_toLeftOf="@+id/colon"
+            android:layout_below="@+id/buildCreator" android:layout_toLeftOf="@+id/colon"
             android:layout_toStartOf="@+id/colon"/>
 
     <TextView
