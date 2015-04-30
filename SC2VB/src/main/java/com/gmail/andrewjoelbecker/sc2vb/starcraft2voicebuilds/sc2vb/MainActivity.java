@@ -5,8 +5,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+
+import java.io.File;
 
 /* Class: MainActivity.java
 *  Function: This class is the home screen for the application and is the gateway to all other activities
@@ -28,6 +31,13 @@ public class MainActivity extends Base_Activity {
 
         adView.loadAd(adRequest);
 
+        File file = new File("terran.dat");
+        if(file.exists()){
+            Toast.makeText(getBaseContext(), "Terran file exists", Toast.LENGTH_SHORT).show();
+        }
+        else{
+            Toast.makeText(getBaseContext(), "File doesn't exist", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void zergClick(View v)

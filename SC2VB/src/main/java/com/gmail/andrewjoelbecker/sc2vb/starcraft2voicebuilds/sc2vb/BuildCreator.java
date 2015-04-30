@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -214,18 +215,54 @@ public class BuildCreator extends Base_Activity {
 
     //Perform basic protoss Setup
     public void protossSetup(){
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
+        boolean mode = settings.getBoolean("Mode", false);
         build = new MyBuild(race);
         setupThread();
         setupProtossUI();
+        if(mode){
+            setupRealTimeUI();
+        }
+        else{
+            setupStandardUI();
+        }
     }
 
     //Perform basic terran Setup
     public void terranSetup(){
-        Toast.makeText(getBaseContext(), "ALERT", Toast.LENGTH_SHORT).show();
+        SharedPreferences settings = getSharedPreferences("Settings", 0);
+        boolean mode = settings.getBoolean("Mode", false);
         build = new MyBuild(race);
         setupThread();
         setupTerranUI();
+        if(mode){
+            setupRealTimeUI();
+        }
+        else{
+            setupStandardUI();
+        }
     }
+
+    public void setupRealTimeUI(){
+        LinearLayout v = (LinearLayout)findViewById(R.id.realTime);
+        LinearLayout v2 = (LinearLayout)findViewById(R.id.standard);
+        v.setVisibility(View.VISIBLE);
+        v2.setVisibility(View.GONE);
+    }
+
+    public void setupStandardUI(){
+        LinearLayout v = (LinearLayout)findViewById(R.id.standard);
+        LinearLayout v2 = (LinearLayout)findViewById(R.id.realTime);
+        NumberPicker minutes = (NumberPicker)findViewById(R.id.minutesPicker);
+        NumberPicker seconds = (NumberPicker)findViewById(R.id.secondsPicker);
+        minutes.setMinValue(0);
+        minutes.setMaxValue(60);
+        seconds.setMinValue(0);
+        seconds.setMaxValue(59);
+        v.setVisibility(View.VISIBLE);
+        v2.setVisibility(View.GONE);
+    }
+
 
     //Set up UI components for zerg race
     public void setupZergUI(){

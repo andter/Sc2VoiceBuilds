@@ -203,7 +203,7 @@ public class UploadBuilds extends Base_Activity {
                         String readString = buffReader.readLine();
                         while (readString != null) {
                             if (readString.contains("$")) {
-                                buildNames.add(readString.substring(1));
+                                buildNames.add(readString.substring(1, readString.indexOf("*")));
                             }
                             allBuilds = allBuilds + readString + "\n";
                             readString = buffReader.readLine();

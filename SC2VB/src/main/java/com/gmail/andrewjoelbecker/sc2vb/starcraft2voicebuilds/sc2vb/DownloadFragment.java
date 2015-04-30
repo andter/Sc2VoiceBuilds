@@ -145,8 +145,8 @@ public class DownloadFragment extends Fragment {
             filename = "zerg.dat";
         }
         string = "$";
-            string += originalTitles.get(currentPosition).getItem() + "\n";
-
+            string += originalTitles.get(currentPosition).getItem();
+        string += "**" + "\n";
         string += build.toString();
         Toast.makeText(getActivity().getBaseContext(), string, Toast.LENGTH_LONG).show();
 
